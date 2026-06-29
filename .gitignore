@@ -1,0 +1,22 @@
+# Environment / secrets
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (in case a build tool is added later)
+node_modules/
+dist/
+.cache/

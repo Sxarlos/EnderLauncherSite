@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ender Client — One launcher. Every modpack source.</title>
+<meta name="description" content="Ender Client is an open-source Minecraft launcher. Browse Modrinth, CurseForge, FTB, ATLauncher and Technic, manage isolated instances, and launch the official game. Windows, MIT-licensed." />
+<link rel="canonical" href="https://ender-client.xyz/" />
+
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ender-client.xyz/" />
+<meta property="og:title" content="Ender Client — One launcher. Every modpack source." />
+<meta property="og:description" content="Open-source Minecraft launcher. Browse Modrinth, CurseForge, FTB, ATLauncher and Technic, manage isolated instances, and launch the official game." />
+<meta property="og:image" content="https://ender-client.xyz/assets/og.png" />
+<meta property="og:site_name" content="Ender Client" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ender Client — One launcher. Every modpack source." />
+<meta name="twitter:description" content="Open-source Minecraft launcher for Modrinth, CurseForge, FTB, ATLauncher and Technic." />
+<meta name="twitter:image" content="https://ender-client.xyz/assets/og.png" />
+<meta name="theme-color" content="#0A0911" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --void: #0A0911;
+    --void-2: #0D0B16;
+    --obsidian: #15111F;
+    --obsidian-2: #1C1729;
+    --edge: rgba(164, 114, 255, 0.14);
+    --edge-strong: rgba(164, 114, 255, 0.32);
+    --ender: #A472FF;
+    --ender-bright: #C7A4FF;
+    --chorus: #E06AD6;
+    --portal: #34E5C8;
+    --paper: #ECEAF6;
+    --mist: #9A95B8;
+    --mist-dim: #6B6688;
+
+    --display: "Chakra Petch", system-ui, sans-serif;
+    --body: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --maxw: 1140px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--paper);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .void-bg {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(900px 600px at 78% -5%, rgba(164,114,255,0.16), transparent 60%),
+      radial-gradient(700px 500px at 12% 8%, rgba(52,229,200,0.07), transparent 55%),
+      radial-gradient(1000px 800px at 50% 110%, rgba(224,106,214,0.08), transparent 60%),
+      var(--void);
+  }
+  #particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ender);
+    display: inline-flex; align-items: center; gap: 9px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--edge-strong); }
+
+  .logo-img {
+    image-rendering: pixelated;
+    display: block;
+  }
+
+  /* nav */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(10, 9, 17, 0.72);
+    border-bottom: 1px solid var(--edge);
+  }
+  nav { max-width: var(--maxw); margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; gap: 18px; }
+  .brand {
+    display: flex; align-items: center; gap: 11px;
+    font-family: var(--display); font-weight: 700; letter-spacing: 0.04em; font-size: 18px;
+  }
+  .brand .logo-img { width: 30px; height: 30px; filter: drop-shadow(0 0 10px rgba(120,200,150,0.35)); }
+  .ver {
+    font-family: var(--mono); font-size: 11px; color: var(--ender-bright);
+    border: 1px solid var(--edge-strong); padding: 2px 8px; border-radius: 100px;
+    background: rgba(164,114,255,0.08);
+  }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 26px; }
+  .nav-links a { font-size: 14px; color: var(--mist); transition: color .18s; }
+  .nav-links a:hover { color: var(--paper); }
+  .nav-links a.nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--display); font-weight: 600; font-size: 14px;
+    padding: 9px 16px; border-radius: 9px; background: var(--ender); color: #110a1f;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .nav-links a.nav-cta:hover { color: #110a1f; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(164,114,255,0.4); }
+  .nav-toggle { display: none; }
+
+  /* hero */
+  .hero { padding: 88px 0 76px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
+  h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(40px, 5.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em; margin: 20px 0 0;
+  }
+  h1 .accent {
+    background: linear-gradient(110deg, var(--ender-bright), var(--chorus));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede { color: var(--mist); font-size: 18px; margin-top: 22px; max-width: 30em; }
+  .lede strong { color: var(--paper); font-weight: 600; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--display); font-weight: 600; font-size: 15px;
+    padding: 14px 22px; border-radius: 11px; border: 1px solid transparent;
+    transition: transform .15s, box-shadow .15s, background .15s, border-color .15s;
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary {
+    background: linear-gradient(120deg, var(--ender), #8a55f0); color: #100a1d;
+    box-shadow: 0 10px 30px rgba(164,114,255,0.32);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(164,114,255,0.45); }
+  .btn-ghost { background: rgba(255,255,255,0.02); border-color: var(--edge-strong); color: var(--paper); }
+  .btn-ghost:hover { border-color: var(--ender); background: rgba(164,114,255,0.08); }
+  .meta-line {
+    margin-top: 20px; font-family: var(--mono); font-size: 12.5px; color: var(--mist-dim);
+    display: flex; flex-wrap: wrap; gap: 8px 16px;
+  }
+  .meta-line span { display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--portal); }
+
+  /* launcher mock */
+  .mock {
+    position: relative; border-radius: 16px; border: 1px solid var(--edge-strong);
+    background: linear-gradient(180deg, var(--obsidian), var(--void-2));
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,0,0,0.4);
+    overflow: hidden; animation: rise .9s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .mock-bar { display: flex; align-items: center; gap: 8px; padding: 11px 14px; border-bottom: 1px solid var(--edge); background: rgba(0,0,0,0.25); }
+  .mock-bar .tl { display: flex; gap: 7px; }
+  .mock-bar .tl i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+  .tl i:nth-child(1){ background:#E06AD6; } .tl i:nth-child(2){ background:#F0B53C; } .tl i:nth-child(3){ background:#34E5C8; }
+  .mock-bar .title { margin-left: 8px; font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: 0.03em; color: var(--mist); }
+  .mock-body { display: grid; grid-template-columns: 52px 1fr; min-height: 380px; }
+  .mock-side { border-right: 1px solid var(--edge); padding: 14px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; background: rgba(0,0,0,0.15); }
+  .mock-side .ic { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; color: var(--mist-dim); }
+  .mock-side .ic svg { width: 17px; height: 17px; }
+  .mock-side .ic.active { color: var(--ender-bright); background: rgba(164,114,255,0.14); box-shadow: inset 0 0 0 1px var(--edge-strong); }
+  .mock-side .spacer { flex: 1; }
+  .mock-main { padding: 16px 16px 18px; }
+  .mock-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .mock-head h4 { font-family: var(--display); font-weight: 600; font-size: 15px; }
+  .mock-search { font-family: var(--mono); font-size: 11px; color: var(--mist-dim); border: 1px solid var(--edge); border-radius: 8px; padding: 6px 10px; }
+  .cards { display: grid; gap: 10px; }
+  .card { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 11px; border: 1px solid var(--edge); background: rgba(255,255,255,0.015); transition: border-color .2s, transform .2s; }
+  .card:hover { border-color: var(--edge-strong); transform: translateX(2px); }
+  .card.live { border-color: var(--edge-strong); background: rgba(164,114,255,0.06); }
+  .card .thumb { width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 16px; color: #0c0814; }
+  .t-atm { background: linear-gradient(150deg,#A472FF,#6f44d8); }
+  .t-van { background: linear-gradient(150deg,#34E5C8,#1f9e8c); color:#04201b; }
+  .t-prom { background: linear-gradient(150deg,#E06AD6,#9a3e93); }
+  .card .info { flex: 1; min-width: 0; }
+  .card .name { font-weight: 600; font-size: 13.5px; display: flex; align-items: center; gap: 8px; }
+  .card .tag { font-family: var(--mono); font-size: 10px; color: var(--mist); border: 1px solid var(--edge); border-radius: 5px; padding: 1px 6px; }
+  .card .sub { font-family: var(--mono); font-size: 11px; color: var(--mist-dim); margin-top: 3px; }
+  .card .play { width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0; display: grid; place-items: center; background: var(--ender); color: #110a1f; box-shadow: 0 6px 16px rgba(164,114,255,0.4); }
+  .card .play svg { width: 15px; height: 15px; }
+  .progress { margin-top: 8px; height: 5px; border-radius: 100px; background: rgba(255,255,255,0.07); overflow: hidden; }
+  .progress i { display: block; height: 100%; width: 64%; background: linear-gradient(90deg, var(--ender), var(--chorus)); border-radius: 100px; animation: load 2.6s ease-in-out infinite; }
+
+  /* real hero screenshot */
+  .hero-shot {
+    border-radius: 14px; border: 1px solid var(--edge-strong); overflow: hidden;
+    background: var(--void-2);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85), 0 0 70px -25px rgba(164,114,255,0.35);
+    animation: rise .9s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .hero-shot img { display: block; width: 100%; height: auto; }
+
+  /* sources */
+  .sources { padding: 8px 0 64px; }
+  .sources .strip {
+    border: 1px solid var(--edge); border-radius: 16px;
+    background: linear-gradient(180deg, rgba(164,114,255,0.04), transparent);
+    padding: 26px 30px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 26px;
+  }
+  .sources .label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist-dim); margin-right: 6px; }
+  .chip { font-family: var(--display); font-weight: 600; font-size: 14.5px; color: var(--paper); padding: 8px 15px; border-radius: 100px; border: 1px solid var(--edge); background: rgba(255,255,255,0.02); transition: border-color .2s; }
+  .chip:hover { border-color: var(--edge-strong); }
+  .chip .d { color: var(--ender); margin-right: 7px; }
+
+  /* sections */
+  section.block { padding: 80px 0; }
+  .sec-head { max-width: 46em; margin-bottom: 48px; }
+  .sec-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.1; margin-top: 14px; letter-spacing: -0.01em; }
+  .sec-head p { color: var(--mist); margin-top: 14px; font-size: 17px; }
+
+  /* features */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feat { border: 1px solid var(--edge); border-radius: 14px; padding: 22px; background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent); transition: border-color .2s, transform .2s, background .2s; }
+  .feat:hover { border-color: var(--edge-strong); transform: translateY(-3px); background: rgba(164,114,255,0.04); }
+  .feat .ic { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: rgba(164,114,255,0.12); color: var(--ender-bright); margin-bottom: 16px; }
+  .feat .ic svg { width: 21px; height: 21px; }
+  .feat h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin-bottom: 7px; }
+  .feat p { color: var(--mist); font-size: 14.5px; line-height: 1.55; }
+
+  /* screenshots gallery */
+  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .shot {
+    border-radius: 14px; border: 1px solid var(--edge); overflow: hidden;
+    background: linear-gradient(180deg, var(--obsidian), var(--void-2));
+    transition: border-color .2s, transform .2s; position: relative;
+  }
+  .shot:hover { border-color: var(--edge-strong); transform: translateY(-3px); }
+  .shot .chrome { display: flex; align-items: center; gap: 7px; padding: 9px 12px; border-bottom: 1px solid var(--edge); background: rgba(0,0,0,0.25); }
+  .shot .chrome i { width: 9px; height: 9px; border-radius: 50%; background: var(--mist-dim); }
+  .shot .chrome i:first-child { background: var(--chorus); }
+  .shot .chrome span { margin-left: 6px; font-family: var(--mono); font-size: 11px; color: var(--mist); }
+  .shot img { display: block; width: 100%; height: auto; }
+  /* placeholder state until real screenshots are added */
+  .shot .ph {
+    aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+    background:
+      radial-gradient(400px 200px at 50% 30%, rgba(164,114,255,0.08), transparent 70%),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.015) 0 2px, transparent 2px 12px);
+    color: var(--mist-dim);
+  }
+  .shot .ph img { width: 52px; height: 52px; image-rendering: pixelated; opacity: 0.5; }
+  .shot .ph .cap { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; }
+
+  /* themes */
+  .themes-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+  .theme { display: flex; align-items: center; gap: 11px; border: 1px solid var(--edge); border-radius: 100px; padding: 9px 16px 9px 11px; background: rgba(255,255,255,0.02); transition: border-color .2s, transform .2s; }
+  .theme:hover { transform: translateY(-2px); border-color: var(--edge-strong); }
+  .swatch { width: 20px; height: 20px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12); }
+  .theme span { font-family: var(--display); font-weight: 600; font-size: 14px; }
+
+  /* split panels */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .panel { border: 1px solid var(--edge); border-radius: 16px; padding: 30px; background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent); }
+  .panel h3 { font-family: var(--display); font-weight: 600; font-size: 19px; margin-bottom: 12px; display:flex; align-items:center; gap:10px; }
+  .panel h3 svg { width: 20px; height: 20px; color: var(--ender); }
+  .panel p { color: var(--mist); font-size: 15px; }
+  .panel.portal h3 svg { color: var(--portal); }
+  code.inline { font-family: var(--mono); font-size: 13px; color: var(--ender-bright); background: rgba(164,114,255,0.1); padding: 1px 7px; border-radius: 5px; }
+
+  /* install */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .step { border: 1px solid var(--edge); border-radius: 14px; padding: 24px; }
+  .step .n { font-family: var(--mono); font-size: 12px; color: var(--ender); letter-spacing: 0.1em; }
+  .step h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin: 10px 0 8px; }
+  .step p { color: var(--mist); font-size: 14.5px; }
+  .step p code { font-family: var(--mono); font-size: 12.5px; color: var(--ender-bright); }
+
+  /* ram comparison */
+  .ram-chart { display: flex; flex-direction: column; gap: 18px; max-width: 740px; }
+  .ram-row { display: flex; flex-direction: column; gap: 8px; }
+  .ram-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .ram-name { font-family: var(--display); font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .ram-badge { font-family: var(--mono); font-size: 10px; color: var(--ender); border: 1px solid var(--edge-strong); border-radius: 100px; padding: 1px 8px; font-weight: 400; }
+  .ram-badge-warn { color: var(--chorus); border-color: rgba(224,106,214,0.35); }
+  .ram-val { font-family: var(--mono); font-size: 12px; color: var(--mist-dim); white-space: nowrap; }
+  .ram-track { height: 32px; background: rgba(255,255,255,0.035); border-radius: 9px; border: 1px solid var(--edge); overflow: hidden; }
+  .ram-fill { height: 100%; border-radius: 8px; transition: width .6s cubic-bezier(.2,.7,.2,1); }
+  .ram-fill-high  { background: linear-gradient(90deg, rgba(224,106,214,0.55) 0%, rgba(200,80,180,0.2) 100%); }
+  .ram-fill-ender { background: linear-gradient(90deg, var(--ender) 0%, rgba(164,114,255,0.45) 100%); box-shadow: 0 0 22px rgba(164,114,255,0.35); }
+  .ram-fill-low   { background: linear-gradient(90deg, rgba(52,229,200,0.55) 0%, rgba(52,229,200,0.18) 100%); }
+  .ram-row-ender .ram-track { border-color: var(--edge-strong); }
+  .ram-note { margin-top: 18px; font-family: var(--mono); font-size: 11.5px; color: var(--mist-dim); line-height: 1.65; }
+  .cmp-table { margin-top: 28px; border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; max-width: 740px; }
+  .cmp-row { display: grid; grid-template-columns: 1fr repeat(3, 130px); align-items: center; padding: 12px 18px; gap: 8px; }
+  .cmp-row + .cmp-row { border-top: 1px solid var(--edge); }
+  .cmp-head { background: rgba(255,255,255,0.025); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--mist-dim); text-transform: uppercase; }
+  .cmp-feat { font-family: var(--display); font-weight: 600; font-size: 14px; }
+  .cmp-good, .cmp-bad { font-family: var(--mono); font-size: 13px; display: flex; align-items: center; gap: 6px; }
+  .cmp-good svg, .cmp-bad svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .cmp-good { color: var(--portal); }
+  .cmp-bad  { color: rgba(224,106,214,0.7); }
+  @media (max-width: 640px) {
+    .cmp-row { grid-template-columns: 1fr repeat(3, 72px); padding: 10px 14px; gap: 4px; }
+    .cmp-feat { font-size: 13px; }
+    .cmp-good, .cmp-bad { font-size: 11px; }
+  }
+
+  /* support */
+  .support {
+    border: 1px solid rgba(255,221,0,0.18); border-radius: 20px; padding: 56px 40px; text-align: center;
+    background: radial-gradient(600px 280px at 50% -10%, rgba(255,221,0,0.07), transparent 60%), linear-gradient(180deg, var(--obsidian), var(--void-2));
+  }
+  .support .eyebrow { color: #e6c800; }
+  .support .eyebrow::before { background: rgba(255,221,0,0.35); }
+  .support h2 { font-family: var(--display); font-weight: 700; font-size: clamp(26px, 3.6vw, 38px); line-height: 1.1; margin-top: 14px; }
+  .support p { color: var(--mist); margin: 14px auto 28px; max-width: 32em; font-size: 16px; }
+  .btn-coffee {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--display); font-weight: 700; font-size: 15px;
+    padding: 14px 26px; border-radius: 11px; border: none;
+    background: #FFDD00; color: #1a1200;
+    box-shadow: 0 8px 28px rgba(255,221,0,0.28);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-coffee:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255,221,0,0.4); color: #1a1200; }
+  .btn-coffee svg { width: 20px; height: 20px; flex-shrink: 0; }
+  @media (max-width: 560px) { .support { padding: 40px 24px; } }
+
+  /* final */
+  .final {
+    border: 1px solid var(--edge-strong); border-radius: 20px; padding: 56px 40px; text-align: center;
+    background: radial-gradient(600px 300px at 50% -20%, rgba(164,114,255,0.2), transparent 60%), linear-gradient(180deg, var(--obsidian), var(--void-2));
+  }
+  .final h2 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; }
+  .final p { color: var(--mist); margin: 16px auto 30px; max-width: 34em; font-size: 17px; }
+
+  /* footer */
+  footer { border-top: 1px solid var(--edge); padding: 40px 0 56px; margin-top: 80px; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+  .foot .brand { font-size: 16px; }
+  .foot .brand .logo-img { width: 26px; height: 26px; }
+  .foot-links { display: flex; gap: 22px; margin-left: auto; }
+  .foot-links a { font-size: 14px; color: var(--mist); transition: color .18s; }
+  .foot-links a:hover { color: var(--paper); }
+  .disclaimer { margin-top: 22px; font-family: var(--mono); font-size: 12px; color: var(--mist-dim); line-height: 1.7; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes load { 0%{ width: 18%; } 50%{ width: 78%; } 100%{ width: 18%; } }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+    .mock { max-width: 520px; }
+    .feat-grid, .steps { grid-template-columns: 1fr 1fr; }
+    .split, .gallery { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--void-2); border-bottom: 1px solid var(--edge); padding: 18px 28px; gap: 16px; }
+    .nav-toggle { display: grid; place-items: center; margin-left: auto; width: 40px; height: 40px; border-radius: 9px; border: 1px solid var(--edge); background: transparent; color: var(--paper); cursor: pointer; }
+    .nav-toggle svg { width: 20px; height: 20px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .feat-grid, .steps { grid-template-columns: 1fr; }
+    .hero { padding: 56px 0 50px; }
+    section.block { padding: 56px 0; }
+    .final { padding: 40px 24px; }
+    .mock-body { min-height: 340px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+  :focus-visible { outline: 2px solid var(--ender); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="void-bg"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <a href="#top" class="brand">
+      <img class="logo-img" src="assets/logo.png" alt="Ender Client logo" width="30" height="30" />
+      Ender Client
+      <span class="ver" id="ver">v0.3.5</span>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="#features">Features</a>
+      <a href="#screens">Screenshots</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
+      <a class="nav-cta" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+        Download
+      </a>
+    </div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Open-source Minecraft launcher</span>
+        <h1>One launcher.<br /><span class="accent">Every modpack source.</span></h1>
+        <p class="lede">Ender Client browses <strong>Modrinth, CurseForge, FTB, ATLauncher</strong> and <strong>Technic</strong> in one place, keeps every instance isolated, and launches the official game. It's <strong>just an interface</strong> — your install stays untouched.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.6c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.6C24 5.9 18.6.5 12 .5z"/></svg>
+            View source
+          </a>
+        </div>
+        <div class="meta-line">
+          <span><span class="dot"></span>MIT licensed</span>
+          <span><span class="dot"></span>Windows x64</span>
+          <span><span class="dot"></span>In-app auto-updates</span>
+          <span><span class="dot"></span>Not affiliated with Mojang</span>
+        </div>
+      </div>
+
+      <!-- hero: real home screen -->
+      <div class="hero-shot">
+        <img src="assets/screenshots/home.webp" alt="Ender Client home screen — Welcome to Ender Client, with Browse Modpacks and New Instance buttons and a library grid" width="1163" height="746" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <section class="sources" id="sources">
+    <div class="wrap">
+      <div class="strip reveal">
+        <span class="label">Browse &amp; install from</span>
+        <span class="chip"><span class="d">›</span>Modrinth</span>
+        <span class="chip"><span class="d">›</span>CurseForge</span>
+        <span class="chip"><span class="d">›</span>FTB</span>
+        <span class="chip"><span class="d">›</span>FTB Legacy</span>
+        <span class="chip"><span class="d">›</span>ATLauncher</span>
+        <span class="chip"><span class="d">›</span>Technic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="block" id="features">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">What's inside</span>
+        <h2>Everything you need to play, nothing you don't.</h2>
+        <p>A focused launcher built with Electron and React. Sign in, find a pack, launch it — with live logs, isolated instances, and the conveniences that usually take three different tools.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.8 8.3 9 9 5.2-.7 9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Secure Microsoft login</h3>
+          <p>OAuth via msmc. Only an encrypted refresh token is kept in your OS keychain — your password is never seen or stored.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>Multi-source modpack browser</h3>
+          <p>Search five providers from one window. Sort Modrinth and CurseForge by popular, updated or newest, and filter by category.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+          <h3>Isolated instances</h3>
+          <p>Vanilla or modded, any version, each with its own clean <code class="inline">.minecraft</code> folder. No cross-contamination between packs.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V5l8 4-8 4"/><path d="M12 9l8 4-8 4"/></svg></div>
+          <h3>Launch with live logs</h3>
+          <p>First run downloads the version and assets via minecraft-launcher-core. Progress and game output stream right onto the card.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg></div>
+          <h3>Server monitor</h3>
+          <p>Add servers to watch and the launcher pings them for live status and player counts, so you know what's online before you launch.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 6.5a3 3 0 0 1 0 5.8M18 20a5.3 5.3 0 0 0-3-4.7"/></svg></div>
+          <h3>Friends &amp; presence</h3>
+          <p>Add friends by code and see who's online and what they're playing — powered by a relay you self-host, so the social graph is yours.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+          <h3>Shader auto-install</h3>
+          <p>Spots missing EuphoriaPatcher shaders from game output and pulls them automatically from Modrinth — no manual hunting.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
+          <h3>In-app updates</h3>
+          <p>Checks GitHub Releases directly. When a new build ships, an update banner appears within minutes — install without leaving the app.</p>
+        </div>
+        <div class="feat reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.5A4.5 4.5 0 0 1 12 3z"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="15.5" cy="14" r="1"/></svg></div>
+          <h3>Seven built-in themes</h3>
+          <p>Ender, Amethyst, Ocean, Crimson, Gold, Midnight and Daylight. Plus Discord Rich Presence and per-instance play-time tracking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREENSHOTS -->
+  <section class="block" id="screens" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">See it in action</span>
+        <h2>The launcher, up close.</h2>
+        <p>Real captures from Ender Client. Built to feel native, fast, and out of your way.</p>
+      </div>
+      <div class="gallery">
+        <div class="shot reveal">
+          <div class="chrome"><i></i><i></i><i></i><span>Modpack browser — six sources</span></div>
+          <img src="assets/screenshots/browse.webp" alt="Browsing CurseForge modpacks in Ender Client — RLCraft, Pixelmon and All the Mods 10 with install buttons" width="1166" height="751" />
+        </div>
+        <div class="shot reveal">
+          <div class="chrome"><i></i><i></i><i></i><span>Server monitor — live status</span></div>
+          <img src="assets/screenshots/servers.webp" alt="Server monitor in Ender Client showing Hypixel with a live player count and ping" width="1165" height="754" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THEMES -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Make it yours</span>
+        <h2>Seven themes, one void.</h2>
+      </div>
+      <div class="themes-row reveal">
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#A472FF,#5b2bc9)"></span><span>Ender</span></div>
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#C77DFF,#7b3ff2)"></span><span>Amethyst</span></div>
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#34E5C8,#2477d6)"></span><span>Ocean</span></div>
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#FF5C7A,#c81e3a)"></span><span>Crimson</span></div>
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#F7C948,#d99410)"></span><span>Gold</span></div>
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#2a2d52,#10121f)"></span><span>Midnight</span></div>
+        <div class="theme"><span class="swatch" style="background:linear-gradient(135deg,#f4f1ff,#cfd2e8)"></span><span>Daylight</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONESTY SPLIT -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap split">
+      <div class="panel reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.8 8.3 9 9 5.2-.7 9-4 9-9V7z"/></svg>Just an interface</h3>
+        <p>Ender Client downloads modpacks and spawns the <strong style="color:var(--paper)">official</strong> Minecraft game. It doesn't modify Minecraft itself, and it isn't affiliated with Mojang or Microsoft. You still need a genuine account to play.</p>
+      </div>
+      <div class="panel portal reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18 22 12 16 6M8 6 2 12 8 18"/></svg>Open source &amp; self-hostable</h3>
+        <p>MIT-licensed and on GitHub. The friends feature runs on a small relay you host yourself — paste its URL into <code class="inline">Settings → API Keys</code> and your presence data never leaves infrastructure you control.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAM COMPARISON -->
+  <section class="block" id="performance" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Resource usage</span>
+        <h2>Easy on RAM. Hard on features.</h2>
+        <p>Most Electron launchers are notorious for memory bloat. Ender Client is the exception — sitting comfortably close to native launchers at idle, and nowhere near CurseForge's eye-watering spike when a modpack loads.</p>
+      </div>
+      <div class="ram-chart reveal">
+        <div class="ram-row">
+          <div class="ram-label">
+            <span class="ram-name">CurseForge <span class="ram-badge ram-badge-warn">up to ~1 GB launching</span></span>
+            <span class="ram-val">~200 MB idle</span>
+          </div>
+          <div class="ram-track">
+            <div class="ram-fill ram-fill-high" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="ram-row ram-row-ender">
+          <div class="ram-label">
+            <span class="ram-name">Ender Client <span class="ram-badge">this launcher</span></span>
+            <span class="ram-val">~30–40 MB idle</span>
+          </div>
+          <div class="ram-track">
+            <div class="ram-fill ram-fill-ender" style="width:18%"></div>
+          </div>
+        </div>
+        <div class="ram-row">
+          <div class="ram-label">
+            <span class="ram-name">Prism Launcher</span>
+            <span class="ram-val">~22 MB idle</span>
+          </div>
+          <div class="ram-track">
+            <div class="ram-fill ram-fill-low" style="width:11%"></div>
+          </div>
+        </div>
+      </div>
+      <p class="ram-note">Measured at idle on Windows. Figures are from real testing — actual usage varies by system, version, and background processes.</p>
+
+      <div class="cmp-table reveal">
+        <div class="cmp-row cmp-head">
+          <span></span>
+          <span>CurseForge</span>
+          <span>Ender Client</span>
+          <span>Prism</span>
+        </div>
+        <div class="cmp-row">
+          <span class="cmp-feat">Ads in launcher</span>
+          <span class="cmp-bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Yes</span>
+          <span class="cmp-good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg> No</span>
+          <span class="cmp-good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg> No</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="block" id="install" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Get started</span>
+        <h2>Playing in three steps.</h2>
+        <p>You'll need Java installed to launch the game — Java 21 for 1.20.5+, Java 17 for 1.17–1.20.4, Java 8 for older versions.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">STEP 01</div>
+          <h3>Download &amp; install</h3>
+          <p>Grab the latest Windows installer from GitHub Releases and run it. Choose your install location — it's a standard installer.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">STEP 02</div>
+          <h3>Sign in &amp; pick a pack</h3>
+          <p>Log in with your Microsoft account, then browse the modpack sources and install whatever you fancy, or create a clean instance.</p>
+        </div>
+        <div class="step reveal">
+          <div class="n">STEP 03</div>
+          <h3>Hit launch</h3>
+          <p>First launch downloads the version and assets automatically. Watch the progress on the card, then you're in the game.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="support reveal">
+        <span class="eyebrow">Support the project</span>
+        <h2>Buy me a coffee ☕</h2>
+        <p>Ender Client is built and maintained by one person in their spare time. If it's saved you hassle or you just want to say thanks, a coffee means the world.</p>
+        <a class="btn-coffee" href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+          Buy me a coffee
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="block" style="padding-top:0;">
+    <div class="wrap">
+      <div class="final reveal">
+        <h2>Ready to enter the End?</h2>
+        <p>Free, open source, and updated from inside the app. Download once and you're set.</p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="btn btn-primary" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">Star on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="#top" class="brand">
+        <img class="logo-img" src="assets/logo.png" alt="" width="26" height="26" />
+        Ender Client
+      </a>
+      <div class="foot-links">
+        <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">Releases</a>
+        <a href="https://github.com/Sxarlos/EnderClient/blob/main/README.md" target="_blank" rel="noopener">Docs</a>
+        <a href="#features">Features</a>
+        <a href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener" style="color:#e6c800;">☕ Support</a>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Ender Client is an open-source, MIT-licensed launcher built with Electron and React. It is just an interface that downloads modpacks and launches the official game — it does not modify Minecraft.<br />
+      Not affiliated with, endorsed by, or associated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle?.addEventListener('click', () => links.classList.toggle('open'));
+  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  (function () {
+    if (reduce) return;
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    let w, h, parts;
+    function size() {
+      w = c.width = window.innerWidth; h = c.height = window.innerHeight;
+      const count = Math.min(70, Math.floor(w / 22));
+      parts = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() * 1.6 + 0.4,
+        vy: -(Math.random() * 0.35 + 0.08), vx: (Math.random() - 0.5) * 0.18,
+        a: Math.random() * 0.5 + 0.15, tw: Math.random() * Math.PI * 2
+      }));
+    }
+    size(); window.addEventListener('resize', size);
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (const p of parts) {
+        p.y += p.vy; p.x += p.vx; p.tw += 0.02;
+        if (p.y < -5) { p.y = h + 5; p.x = Math.random() * w; }
+        const flick = 0.6 + Math.sin(p.tw) * 0.4;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180,130,255,${p.a * flick})`; ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+</script>
+
+<script>
+  // Reflect the latest GitHub release: update the version pill and point
+  // the Download buttons at the newest installer. Falls back silently to the
+  // static v0.3.5 / releases-latest links if GitHub is unreachable or rate-limited.
+  (async function () {
+    const REPO = "Sxarlos/EnderClient";
+    try {
+      const res = await fetch("https://api.github.com/repos/" + REPO + "/releases/latest", {
+        headers: { "Accept": "application/vnd.github+json" }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+
+      const tag = (data.tag_name || "").trim();
+      if (tag) {
+        const v = /^v/i.test(tag) ? tag : "v" + tag;
+        const pill = document.getElementById("ver");
+        if (pill) pill.textContent = v;
+      }
+
+      const exe = (data.assets || []).find(a => /\.exe$/i.test(a.name || ""));
+      if (exe && exe.browser_download_url) {
+        document.querySelectorAll("a.nav-cta, a.btn-primary").forEach(a => {
+          a.href = exe.browser_download_url;
+        });
+      }
+    } catch (_) { /* keep static fallbacks */ }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ | Ender Client — Free Open-Source Minecraft Launcher</title>
+<meta name="description" content="Frequently asked questions about Ender Client — is it safe, how it compares to CurseForge and Prism, Java requirements, modpack sources, and more." />
+<link rel="canonical" href="https://ender-client.xyz/faq" />
+
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ender-client.xyz/faq" />
+<meta property="og:title" content="FAQ | Ender Client" />
+<meta property="og:description" content="Is Ender Client safe? How does it compare to CurseForge or Prism? Answers to the most common questions." />
+<meta property="og:image" content="https://ender-client.xyz/assets/og.png" />
+<meta property="og:site_name" content="Ender Client" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="FAQ | Ender Client" />
+<meta name="twitter:description" content="Is Ender Client safe? How does it compare to CurseForge or Prism? Answers to the most common questions." />
+<meta name="twitter:image" content="https://ender-client.xyz/assets/og.png" />
+<meta name="theme-color" content="#0A0911" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Ender Client safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ender Client is fully open-source under the MIT license — every line of code is public on GitHub and can be audited by anyone. It uses Microsoft's official OAuth flow to sign you in, downloads modpacks from trusted sources (Modrinth, CurseForge, FTB, ATLauncher, Technic), and stores only an encrypted refresh token in your OS keychain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Ender Client a hacked client or cheat client?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. 'Client' in the name refers to a launcher, not a hacked Minecraft client. Ender Client does not modify Minecraft game files, inject code into the JVM, or provide any in-game advantage. It is simply an interface that downloads modpacks and launches the official game."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Ender Client free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free. MIT-licensed and open-source with no paid tier, no ads, and no required subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Ender Client work on Mac or Linux?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. Ender Client currently targets Windows x64 only. Mac and Linux support is on the roadmap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What modpack sources does Ender Client support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modrinth, CurseForge, FTB (modern and legacy), ATLauncher, and Technic — all browsable from a single window."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Java version do I need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Java 21 for Minecraft 1.20.5 and newer. Java 17 for versions 1.17–1.20.4. Java 8 for anything older."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I install a modpack?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open Ender Client, sign in with your Microsoft account, open the modpack browser, find a pack, and hit Install. The launcher handles the rest automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I update Ender Client?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ender Client checks GitHub Releases automatically. When an update is available, a banner appears inside the app — click it to install without leaving the launcher."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my Microsoft account safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Ender Client uses Microsoft's official OAuth flow via msmc. Your password is entered on Microsoft's own login page — Ender Client never sees it. Only an encrypted refresh token is stored in your OS keychain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Ender Client modify my existing Minecraft installation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Each instance gets its own isolated .minecraft folder. Your existing Minecraft installation and any other launchers you use are completely untouched."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --void: #0A0911;
+    --void-2: #0D0B16;
+    --obsidian: #15111F;
+    --obsidian-2: #1C1729;
+    --edge: rgba(164, 114, 255, 0.14);
+    --edge-strong: rgba(164, 114, 255, 0.32);
+    --ender: #A472FF;
+    --ender-bright: #C7A4FF;
+    --chorus: #E06AD6;
+    --portal: #34E5C8;
+    --paper: #ECEAF6;
+    --mist: #9A95B8;
+    --mist-dim: #6B6688;
+
+    --display: "Chakra Petch", system-ui, sans-serif;
+    --body: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --maxw: 1140px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void);
+    color: var(--paper);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .void-bg {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(900px 600px at 78% -5%, rgba(164,114,255,0.16), transparent 60%),
+      radial-gradient(700px 500px at 12% 8%, rgba(52,229,200,0.07), transparent 55%),
+      radial-gradient(1000px 800px at 50% 110%, rgba(224,106,214,0.08), transparent 60%),
+      var(--void);
+  }
+  #particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--ender);
+    display: inline-flex; align-items: center; gap: 9px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--edge-strong); }
+
+  .logo-img { image-rendering: pixelated; display: block; }
+
+  /* nav */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(10, 9, 17, 0.72);
+    border-bottom: 1px solid var(--edge);
+  }
+  nav { max-width: var(--maxw); margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; gap: 18px; }
+  .brand {
+    display: flex; align-items: center; gap: 11px;
+    font-family: var(--display); font-weight: 700; letter-spacing: 0.04em; font-size: 18px;
+  }
+  .brand .logo-img { width: 30px; height: 30px; filter: drop-shadow(0 0 10px rgba(120,200,150,0.35)); }
+  .ver {
+    font-family: var(--mono); font-size: 11px; color: var(--ender-bright);
+    border: 1px solid var(--edge-strong); padding: 2px 8px; border-radius: 100px;
+    background: rgba(164,114,255,0.08);
+  }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 26px; }
+  .nav-links a { font-size: 14px; color: var(--mist); transition: color .18s; }
+  .nav-links a:hover { color: var(--paper); }
+  .nav-links a.active { color: var(--paper); }
+  .nav-links a.nav-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--display); font-weight: 600; font-size: 14px;
+    padding: 9px 16px; border-radius: 9px; background: var(--ender); color: #110a1f;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .nav-links a.nav-cta:hover { color: #110a1f; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(164,114,255,0.4); }
+  .nav-toggle { display: none; }
+
+  /* page hero */
+  .page-hero { padding: 72px 0 56px; }
+  .page-hero h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(36px, 5vw, 54px); line-height: 1.06; letter-spacing: -0.01em;
+    margin-top: 16px;
+  }
+  .page-hero h1 .accent {
+    background: linear-gradient(110deg, var(--ender-bright), var(--chorus));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .page-hero p { color: var(--mist); font-size: 18px; margin-top: 14px; max-width: 38em; }
+
+  /* faq */
+  .faq-section { padding: 0 0 96px; }
+  .faq-group { margin-bottom: 52px; }
+  .faq-group-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mist-dim); margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--edge);
+  }
+  .faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+  details {
+    border: 1px solid var(--edge); border-radius: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent);
+    transition: border-color .2s;
+  }
+  details[open] { border-color: var(--edge-strong); background: rgba(164,114,255,0.04); }
+  details[open] summary { color: var(--paper); }
+
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 20px 22px;
+    font-family: var(--display); font-weight: 600; font-size: 16px; color: var(--mist);
+    transition: color .18s;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { color: var(--paper); }
+
+  .faq-chevron {
+    width: 18px; height: 18px; flex-shrink: 0; color: var(--mist-dim);
+    transition: transform .25s cubic-bezier(.2,.7,.2,1);
+  }
+  details[open] .faq-chevron { transform: rotate(180deg); color: var(--ender); }
+
+  .faq-body {
+    padding: 0 22px 20px;
+    color: var(--mist); font-size: 15.5px; line-height: 1.65;
+    border-top: 1px solid var(--edge);
+    padding-top: 16px;
+  }
+  .faq-body strong { color: var(--paper); font-weight: 600; }
+  .faq-body code {
+    font-family: var(--mono); font-size: 13px; color: var(--ender-bright);
+    background: rgba(164,114,255,0.1); padding: 1px 7px; border-radius: 5px;
+  }
+  .faq-body a { color: var(--ender-bright); border-bottom: 1px solid rgba(199,164,255,0.3); transition: border-color .15s; }
+  .faq-body a:hover { border-color: var(--ender-bright); }
+
+  /* cta strip */
+  .faq-cta {
+    border: 1px solid var(--edge-strong); border-radius: 20px; padding: 48px 40px; text-align: center;
+    background: radial-gradient(600px 300px at 50% -20%, rgba(164,114,255,0.18), transparent 60%), linear-gradient(180deg, var(--obsidian), var(--void-2));
+    margin-bottom: 80px;
+  }
+  .faq-cta h2 { font-family: var(--display); font-weight: 700; font-size: clamp(24px, 3.5vw, 36px); line-height: 1.1; }
+  .faq-cta p { color: var(--mist); margin: 14px auto 28px; max-width: 34em; font-size: 16px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--display); font-weight: 600; font-size: 15px;
+    padding: 14px 22px; border-radius: 11px; border: 1px solid transparent;
+    transition: transform .15s, box-shadow .15s, background .15s, border-color .15s;
+  }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary {
+    background: linear-gradient(120deg, var(--ender), #8a55f0); color: #100a1d;
+    box-shadow: 0 10px 30px rgba(164,114,255,0.32);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(164,114,255,0.45); }
+  .btn-ghost { background: rgba(255,255,255,0.02); border-color: var(--edge-strong); color: var(--paper); }
+  .btn-ghost:hover { border-color: var(--ender); background: rgba(164,114,255,0.08); }
+
+  /* footer */
+  footer { border-top: 1px solid var(--edge); padding: 40px 0 56px; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+  .foot .brand { font-size: 16px; }
+  .foot .brand .logo-img { width: 26px; height: 26px; }
+  .foot-links { display: flex; gap: 22px; margin-left: auto; }
+  .foot-links a { font-size: 14px; color: var(--mist); transition: color .18s; }
+  .foot-links a:hover { color: var(--paper); }
+  .disclaimer { margin-top: 22px; font-family: var(--mono); font-size: 12px; color: var(--mist-dim); line-height: 1.7; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--void-2); border-bottom: 1px solid var(--edge); padding: 18px 28px; gap: 16px; }
+    .nav-toggle { display: grid; place-items: center; margin-left: auto; width: 40px; height: 40px; border-radius: 9px; border: 1px solid var(--edge); background: transparent; color: var(--paper); cursor: pointer; }
+    .nav-toggle svg { width: 20px; height: 20px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .page-hero { padding: 52px 0 40px; }
+    .faq-section { padding-bottom: 64px; }
+    .faq-cta { padding: 36px 24px; }
+    summary { font-size: 15px; padding: 16px 18px; }
+    .faq-body { padding: 0 18px 16px; padding-top: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+  :focus-visible { outline: 2px solid var(--ender); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="void-bg"></div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <a href="/" class="brand">
+      <img class="logo-img" src="assets/logo.png" alt="Ender Client logo" width="30" height="30" />
+      Ender Client
+      <span class="ver" id="ver">v0.3.5</span>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="/features">Features</a>
+      <a href="/#screens">Screenshots</a>
+      <a href="/faq" class="active">FAQ</a>
+      <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
+      <a class="nav-cta" href="/download">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+        Download
+      </a>
+    </div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Help &amp; answers</span>
+      <h1>Frequently asked <span class="accent">questions.</span></h1>
+      <p>Everything you need to know about Ender Client — safety, compatibility, modpack sources, and how it compares to other launchers.</p>
+    </div>
+  </section>
+
+  <!-- FAQ CONTENT -->
+  <section class="faq-section">
+    <div class="wrap">
+
+      <!-- Safety & Trust -->
+      <div class="faq-group reveal">
+        <div class="faq-group-label">Safety &amp; Trust</div>
+        <div class="faq-list">
+
+          <details>
+            <summary>
+              Is Ender Client safe?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Yes. Ender Client is <strong>fully open-source under the MIT license</strong> — every line of code is public on <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a> and can be audited by anyone. It uses Microsoft's official OAuth flow to sign you in, downloads modpacks from trusted sources (Modrinth, CurseForge, FTB, ATLauncher, Technic), and stores only an encrypted refresh token in your OS keychain. Your password is never seen or stored.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Is Ender Client a hacked client or cheat client?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              No. "Client" in the name refers to a <strong>launcher</strong> — like CurseForge or Prism Launcher — not a hacked Minecraft client. Ender Client does not modify Minecraft game files, inject code into the JVM, or provide any in-game advantage. It is simply an interface that downloads modpacks and launches the <strong>official game</strong>.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Is my Microsoft account safe?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Yes. Ender Client uses Microsoft's official OAuth flow via <strong>msmc</strong>. Your password is entered on <strong>Microsoft's own login page</strong> — Ender Client never sees it. Only an encrypted refresh token is stored in your OS keychain, the same way Windows and other apps manage credentials.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Does Ender Client modify my existing Minecraft installation?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              No. Each instance gets its own <strong>isolated <code>.minecraft</code> folder</strong>. Your existing Minecraft installation, the official launcher, and any other third-party launchers you use are completely untouched.
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <!-- Getting Started -->
+      <div class="faq-group reveal">
+        <div class="faq-group-label">Getting Started</div>
+        <div class="faq-list">
+
+          <details>
+            <summary>
+              Is Ender Client free?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Yes, completely free. Ender Client is <strong>MIT-licensed and open-source</strong> with no paid tier, no ads inside the launcher, and no required subscription. If it saves you hassle, you can optionally support development on <a href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener">Buy Me a Coffee</a> or via a Stripe subscription — but that's never required to use the launcher.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              How do I install a modpack?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Open Ender Client, sign in with your Microsoft account, then open the <strong>modpack browser</strong>. Choose a source (Modrinth, CurseForge, FTB, ATLauncher, or Technic), find a pack you like, and hit <strong>Install</strong>. The launcher handles the rest — downloading the pack, its mods, and the correct Minecraft version. Once complete, click Play from your library.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              How do I update Ender Client?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Ender Client checks <strong>GitHub Releases automatically</strong>. When a new build ships, an update banner appears inside the app within minutes — click it to download and install the update without leaving the launcher.
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <!-- Compatibility -->
+      <div class="faq-group reveal">
+        <div class="faq-group-label">Compatibility</div>
+        <div class="faq-list">
+
+          <details>
+            <summary>
+              What modpack sources does Ender Client support?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              <strong>Modrinth, CurseForge, FTB</strong> (modern and legacy), <strong>ATLauncher</strong>, and <strong>Technic</strong> — all browsable and installable from a single window inside the launcher. No browser tabs, no manual downloads.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              What Java version do I need?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Java requirements are set by Minecraft, not Ender Client:
+              <br /><br />
+              <strong>Java 21</strong> — Minecraft 1.20.5 and newer<br />
+              <strong>Java 17</strong> — Minecraft 1.17 through 1.20.4<br />
+              <strong>Java 8</strong> — Minecraft 1.16.5 and older<br />
+              <br />
+              You'll need the correct version installed on your system before launching those versions.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Does Ender Client work on Mac or Linux?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Not yet. Ender Client currently targets <strong>Windows x64</strong> only. Mac and Linux support is on the roadmap.
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <!-- Comparisons -->
+      <div class="faq-group reveal">
+        <div class="faq-group-label">Comparisons</div>
+        <div class="faq-list">
+
+          <details>
+            <summary>
+              Ender Client vs CurseForge — what's the difference?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              CurseForge is a large commercial launcher with ads and higher memory usage. Ender Client is <strong>ad-free, open-source</strong>, and uses far less RAM at idle. It also supports more modpack sources — Modrinth, FTB, ATLauncher, and Technic alongside CurseForge — so you're not limited to one platform. If you're looking for a <strong>CurseForge alternative</strong> that doesn't serve you ads, Ender Client is built for exactly that.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Ender Client vs Prism Launcher — what's the difference?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              Prism is a Qt-based launcher focused on flexibility and very low resource usage — a great choice if you prefer a traditional interface and minimal overhead. Ender Client is <strong>Electron/React-based</strong> with a more polished, modern interface and built-in social features like friends, presence, and server monitoring. Pick Prism for raw efficiency; pick Ender Client for a curated, visually modern experience with shader auto-install and in-app updates.
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              Is Ender Client affiliated with Mojang or Microsoft?
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-body">
+              No. Ender Client is an independent, community-built project. It is <strong>not affiliated with, endorsed by, or associated with Mojang Studios or Microsoft</strong>. Minecraft is a trademark of Mojang Studios. You still need a genuine Minecraft account to play.
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="faq-cta reveal">
+        <h2>Still have questions?</h2>
+        <p>Open an issue on GitHub or check the README — the community and source code are always there.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn btn-ghost" href="https://github.com/Sxarlos/EnderClient/issues" target="_blank" rel="noopener">Ask on GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="/" class="brand">
+        <img class="logo-img" src="assets/logo.png" alt="" width="26" height="26" />
+        Ender Client
+      </a>
+      <div class="foot-links">
+        <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
+        <a href="/download">Download</a>
+        <a href="/features">Features</a>
+        <a href="/faq">FAQ</a>
+        <a href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener" style="color:#e6c800;">☕ Support</a>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Ender Client is an open-source, MIT-licensed launcher built with Electron and React. It is just an interface that downloads modpacks and launches the official game — it does not modify Minecraft.<br />
+      Not affiliated with, endorsed by, or associated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle?.addEventListener('click', () => links.classList.toggle('open'));
+  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  (function () {
+    if (reduce) return;
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    let w, h, parts;
+    function size() {
+      w = c.width = window.innerWidth; h = c.height = window.innerHeight;
+      const count = Math.min(70, Math.floor(w / 22));
+      parts = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() * 1.6 + 0.4,
+        vy: -(Math.random() * 0.35 + 0.08), vx: (Math.random() - 0.5) * 0.18,
+        a: Math.random() * 0.5 + 0.15, tw: Math.random() * Math.PI * 2
+      }));
+    }
+    size(); window.addEventListener('resize', size);
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (const p of parts) {
+        p.y += p.vy; p.x += p.vx; p.tw += 0.02;
+        if (p.y < -5) { p.y = h + 5; p.x = Math.random() * w; }
+        const flick = 0.6 + Math.sin(p.tw) * 0.4;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180,130,255,${p.a * flick})`; ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  (async function () {
+    const REPO = "Sxarlos/EnderClient";
+    try {
+      const res = await fetch("https://api.github.com/repos/" + REPO + "/releases/latest", {
+        headers: { "Accept": "application/vnd.github+json" }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      const tag = (data.tag_name || "").trim();
+      if (tag) {
+        const v = /^v/i.test(tag) ? tag : "v" + tag;
+        const pill = document.getElementById("ver");
+        if (pill) pill.textContent = v;
+      }
+    } catch (_) {}
+  })();
+</script>
+</body>
+</html>

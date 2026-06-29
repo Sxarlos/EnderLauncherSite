@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Download | Ender Client — Free Minecraft Launcher for Windows</title>
+<meta name="description" content="Download Ender Client — a free, open-source Minecraft launcher for Windows. Supports Modrinth, CurseForge, FTB, ATLauncher and Technic. No ads. MIT licensed." />
+<link rel="canonical" href="https://ender-client.xyz/download" />
+
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="apple-touch-icon" href="assets/logo.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ender-client.xyz/download" />
+<meta property="og:title" content="Download Ender Client — Free Minecraft Launcher" />
+<meta property="og:description" content="Free, open-source Minecraft launcher for Windows. Browse Modrinth, CurseForge, FTB, ATLauncher and Technic — no ads, MIT licensed." />
+<meta property="og:image" content="https://ender-client.xyz/assets/og.png" />
+<meta property="og:site_name" content="Ender Client" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Download Ender Client — Free Minecraft Launcher" />
+<meta name="twitter:description" content="Free, open-source Minecraft launcher for Windows. No ads, MIT licensed." />
+<meta name="twitter:image" content="https://ender-client.xyz/assets/og.png" />
+<meta name="theme-color" content="#0A0911" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --void: #0A0911;
+    --void-2: #0D0B16;
+    --obsidian: #15111F;
+    --edge: rgba(164, 114, 255, 0.14);
+    --edge-strong: rgba(164, 114, 255, 0.32);
+    --ender: #A472FF;
+    --ender-bright: #C7A4FF;
+    --chorus: #E06AD6;
+    --portal: #34E5C8;
+    --paper: #ECEAF6;
+    --mist: #9A95B8;
+    --mist-dim: #6B6688;
+    --display: "Chakra Petch", system-ui, sans-serif;
+    --body: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --maxw: 1140px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--void); color: var(--paper); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+  .void-bg {
+    position: fixed; inset: 0; z-index: -2;
+    background:
+      radial-gradient(900px 600px at 78% -5%, rgba(164,114,255,0.16), transparent 60%),
+      radial-gradient(700px 500px at 12% 8%, rgba(52,229,200,0.07), transparent 55%),
+      radial-gradient(1000px 800px at 50% 110%, rgba(224,106,214,0.08), transparent 60%),
+      var(--void);
+  }
+  #particles { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ender); display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--edge-strong); }
+
+  .logo-img { image-rendering: pixelated; display: block; }
+
+  header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px); background: rgba(10,9,17,0.72); border-bottom: 1px solid var(--edge); }
+  nav { max-width: var(--maxw); margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-family: var(--display); font-weight: 700; letter-spacing: 0.04em; font-size: 18px; }
+  .brand .logo-img { width: 30px; height: 30px; filter: drop-shadow(0 0 10px rgba(120,200,150,0.35)); }
+  .ver { font-family: var(--mono); font-size: 11px; color: var(--ender-bright); border: 1px solid var(--edge-strong); padding: 2px 8px; border-radius: 100px; background: rgba(164,114,255,0.08); }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 26px; }
+  .nav-links a { font-size: 14px; color: var(--mist); transition: color .18s; }
+  .nav-links a:hover { color: var(--paper); }
+  .nav-links a.active { color: var(--paper); }
+  .nav-links a.nav-cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 600; font-size: 14px; padding: 9px 16px; border-radius: 9px; background: var(--ender); color: #110a1f; transition: transform .15s, box-shadow .15s; }
+  .nav-links a.nav-cta:hover { color: #110a1f; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(164,114,255,0.4); }
+  .nav-toggle { display: none; }
+
+  /* hero */
+  .page-hero { padding: 72px 0 64px; text-align: center; }
+  .page-hero h1 { font-family: var(--display); font-weight: 700; font-size: clamp(38px, 5.4vw, 58px); line-height: 1.06; letter-spacing: -0.01em; margin-top: 16px; }
+  .page-hero h1 .accent { background: linear-gradient(110deg, var(--ender-bright), var(--chorus)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .page-hero p { color: var(--mist); font-size: 18px; margin: 14px auto 0; max-width: 36em; }
+
+  /* download card */
+  .dl-card {
+    border: 1px solid var(--edge-strong); border-radius: 20px; padding: 44px 40px;
+    background: radial-gradient(700px 300px at 50% -10%, rgba(164,114,255,0.18), transparent 55%), linear-gradient(180deg, var(--obsidian), var(--void-2));
+    text-align: center; margin: 48px 0;
+  }
+  .dl-card .platform { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mist-dim); margin-bottom: 20px; }
+  .dl-card .platform svg { width: 16px; height: 16px; }
+  .dl-filename { font-family: var(--mono); font-size: 13px; color: var(--mist-dim); margin-top: 18px; }
+  .dl-filename span { color: var(--ender-bright); }
+  .meta-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin-top: 16px; }
+  .meta-row span { font-family: var(--mono); font-size: 12px; color: var(--mist-dim); display: inline-flex; align-items: center; gap: 6px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--portal); }
+
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 600; font-size: 15px; padding: 14px 22px; border-radius: 11px; border: 1px solid transparent; transition: transform .15s, box-shadow .15s, background .15s, border-color .15s; }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-primary { background: linear-gradient(120deg, var(--ender), #8a55f0); color: #100a1d; box-shadow: 0 10px 30px rgba(164,114,255,0.32); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(164,114,255,0.45); }
+  .btn-ghost { background: rgba(255,255,255,0.02); border-color: var(--edge-strong); color: var(--paper); }
+  .btn-ghost:hover { border-color: var(--ender); background: rgba(164,114,255,0.08); }
+  .btn-lg { font-size: 17px; padding: 17px 32px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+  /* two column layout */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+
+  /* info panels */
+  .panel { border: 1px solid var(--edge); border-radius: 16px; padding: 28px 30px; background: linear-gradient(180deg, rgba(255,255,255,0.018), transparent); }
+  .panel h3 { font-family: var(--display); font-weight: 600; font-size: 17px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .panel h3 svg { width: 19px; height: 19px; color: var(--ender); flex-shrink: 0; }
+
+  /* req list */
+  .req-list { display: flex; flex-direction: column; gap: 10px; }
+  .req-item { display: flex; align-items: flex-start; gap: 12px; }
+  .req-icon { width: 32px; height: 32px; border-radius: 9px; background: rgba(164,114,255,0.1); display: grid; place-items: center; flex-shrink: 0; color: var(--ender-bright); }
+  .req-icon svg { width: 16px; height: 16px; }
+  .req-text .label { font-family: var(--display); font-weight: 600; font-size: 14px; }
+  .req-text .val { font-family: var(--mono); font-size: 12px; color: var(--mist-dim); margin-top: 1px; }
+
+  /* java table */
+  .java-table { width: 100%; border-collapse: collapse; }
+  .java-table th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--mist-dim); text-transform: uppercase; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--edge); }
+  .java-table td { font-size: 14px; padding: 10px 12px; border-bottom: 1px solid var(--edge); }
+  .java-table tr:last-child td { border-bottom: none; }
+  .java-table td:first-child { font-family: var(--mono); font-size: 13px; color: var(--ender-bright); }
+  .java-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* steps */
+  .steps-section { margin-bottom: 18px; }
+  .step-list { display: flex; flex-direction: column; gap: 12px; }
+  .step-item { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; border: 1px solid var(--edge); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent); transition: border-color .2s; }
+  .step-item:hover { border-color: var(--edge-strong); }
+  .step-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ender); width: 60px; flex-shrink: 0; padding-top: 2px; }
+  .step-content h4 { font-family: var(--display); font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .step-content p { color: var(--mist); font-size: 14.5px; line-height: 1.55; }
+  .step-content a { color: var(--ender-bright); border-bottom: 1px solid rgba(199,164,255,0.3); transition: border-color .15s; }
+  .step-content a:hover { border-color: var(--ender-bright); }
+
+  footer { border-top: 1px solid var(--edge); padding: 40px 0 56px; margin-top: 80px; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+  .foot .brand { font-size: 16px; }
+  .foot .brand .logo-img { width: 26px; height: 26px; }
+  .foot-links { display: flex; gap: 22px; margin-left: auto; }
+  .foot-links a { font-size: 14px; color: var(--mist); transition: color .18s; }
+  .foot-links a:hover { color: var(--paper); }
+  .disclaimer { margin-top: 22px; font-family: var(--mono); font-size: 12px; color: var(--mist-dim); line-height: 1.7; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--void-2); border-bottom: 1px solid var(--edge); padding: 18px 28px; gap: 16px; }
+    .nav-toggle { display: grid; place-items: center; margin-left: auto; width: 40px; height: 40px; border-radius: 9px; border: 1px solid var(--edge); background: transparent; color: var(--paper); cursor: pointer; }
+    .nav-toggle svg { width: 20px; height: 20px; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 0 20px; }
+    .page-hero { padding: 52px 0 44px; }
+    .dl-card { padding: 32px 22px; }
+    .panel { padding: 22px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+  :focus-visible { outline: 2px solid var(--ender); outline-offset: 3px; border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="void-bg"></div>
+<canvas id="particles"></canvas>
+
+<header>
+  <nav>
+    <a href="/" class="brand">
+      <img class="logo-img" src="assets/logo.png" alt="Ender Client logo" width="30" height="30" />
+      Ender Client
+      <span class="ver" id="ver">v0.3.5</span>
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="/features">Features</a>
+      <a href="/#screens">Screenshots</a>
+      <a href="/#install">Install</a>
+      <a href="/faq">FAQ</a>
+      <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
+      <a class="nav-cta active" href="/download">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+        Download
+      </a>
+    </div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Free &amp; open source</span>
+      <h1>Download <span class="accent">Ender Client</span></h1>
+      <p>A free Minecraft launcher for Windows. Browse and install modpacks from Modrinth, CurseForge, FTB, ATLauncher, and Technic — no ads, no bloat.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+
+    <!-- Main download card -->
+    <div class="dl-card reveal">
+      <div class="platform">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+        Windows x64
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg" id="dl-btn" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+          Download for Windows
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/Sxarlos/EnderClient/releases" target="_blank" rel="noopener">All releases</a>
+      </div>
+      <p class="dl-filename">EnderClient-Setup-<span id="ver-inline">0.3.5</span>.exe</p>
+      <div class="meta-row">
+        <span><span class="dot"></span>MIT licensed</span>
+        <span><span class="dot"></span>Windows 10 / 11 x64</span>
+        <span><span class="dot"></span>In-app auto-updates</span>
+        <span><span class="dot"></span>Not affiliated with Mojang</span>
+      </div>
+    </div>
+
+    <!-- System requirements + Java -->
+    <div class="two-col reveal">
+      <div class="panel">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          System requirements
+        </h3>
+        <div class="req-list">
+          <div class="req-item">
+            <div class="req-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg></div>
+            <div class="req-text">
+              <div class="label">Operating system</div>
+              <div class="val">Windows 10 or 11, 64-bit</div>
+            </div>
+          </div>
+          <div class="req-item">
+            <div class="req-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+            <div class="req-text">
+              <div class="label">RAM</div>
+              <div class="val">4 GB minimum (8 GB recommended for modpacks)</div>
+            </div>
+          </div>
+          <div class="req-item">
+            <div class="req-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg></div>
+            <div class="req-text">
+              <div class="label">Disk space</div>
+              <div class="val">200 MB for the launcher + space per instance</div>
+            </div>
+          </div>
+          <div class="req-item">
+            <div class="req-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div class="req-text">
+              <div class="label">Internet connection</div>
+              <div class="val">Required for login and modpack downloads</div>
+            </div>
+          </div>
+          <div class="req-item">
+            <div class="req-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V5l8 4-8 4"/><path d="M12 9l8 4-8 4"/></svg></div>
+            <div class="req-text">
+              <div class="label">Minecraft account</div>
+              <div class="val">Genuine Microsoft / Mojang account required to play</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17V5l8 4-8 4"/><path d="M12 9l8 4-8 4"/></svg>
+          Java version guide
+        </h3>
+        <table class="java-table">
+          <thead>
+            <tr>
+              <th>Java</th>
+              <th>Minecraft versions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Java 21</td>
+              <td>1.20.5 and newer</td>
+            </tr>
+            <tr>
+              <td>Java 17</td>
+              <td>1.17 – 1.20.4</td>
+            </tr>
+            <tr>
+              <td>Java 8</td>
+              <td>1.16.5 and older</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="color:var(--mist);font-size:13.5px;margin-top:16px;line-height:1.55;">
+          Ender Client does not bundle Java. Download the version you need from
+          <a href="https://adoptium.net/" target="_blank" rel="noopener" style="color:var(--ender-bright);border-bottom:1px solid rgba(199,164,255,0.3);">Adoptium</a>
+          (recommended) or
+          <a href="https://www.oracle.com/java/technologies/downloads/" target="_blank" rel="noopener" style="color:var(--ender-bright);border-bottom:1px solid rgba(199,164,255,0.3);">Oracle</a>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Install steps -->
+    <div class="panel steps-section reveal" style="margin-bottom:18px;">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.8 8.3 9 9 5.2-.7 9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg>
+        Installation steps
+      </h3>
+      <div class="step-list">
+        <div class="step-item">
+          <span class="step-num">STEP 01</span>
+          <div class="step-content">
+            <h4>Download the installer</h4>
+            <p>Click the button above to download the latest <code style="font-family:var(--mono);font-size:12.5px;color:var(--ender-bright);background:rgba(164,114,255,0.1);padding:1px 6px;border-radius:5px;">.exe</code> installer from GitHub Releases. If your browser warns you, click "Keep" — it's a code-signed Electron app, not malware.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">STEP 02</span>
+          <div class="step-content">
+            <h4>Run the installer</h4>
+            <p>Double-click the downloaded file and follow the prompts. Choose your install location — a standard Windows installer. Ender Client will launch automatically when done.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">STEP 03</span>
+          <div class="step-content">
+            <h4>Sign in with Microsoft</h4>
+            <p>Log in with your Microsoft account. Your password is entered on Microsoft's own page — Ender Client never sees it. Only an encrypted token is stored locally.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <span class="step-num">STEP 04</span>
+          <div class="step-content">
+            <h4>Browse, install, play</h4>
+            <p>Open the modpack browser, pick a source (Modrinth, CurseForge, FTB, ATLauncher, or Technic), install a pack, and hit Play. First launch downloads the game version and assets automatically.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Antivirus note -->
+    <div class="panel reveal" style="margin-bottom:80px;border-color:rgba(52,229,200,0.2);background:linear-gradient(180deg,rgba(52,229,200,0.04),transparent);">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--portal)"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Antivirus false positives
+      </h3>
+      <p style="color:var(--mist);font-size:15px;line-height:1.65;">
+        Some antivirus tools flag unsigned or newly published Electron apps. Ender Client is <strong style="color:var(--paper)">fully open-source</strong> — you can read every line on <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener" style="color:var(--ender-bright);border-bottom:1px solid rgba(199,164,255,0.3);">GitHub</a> before running it. If Windows SmartScreen appears, click <strong style="color:var(--paper)">More info → Run anyway</strong>.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a href="/" class="brand">
+        <img class="logo-img" src="assets/logo.png" alt="" width="26" height="26" />
+        Ender Client
+      </a>
+      <div class="foot-links">
+        <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
+        <a href="/download">Download</a>
+        <a href="/features">Features</a>
+        <a href="/faq">FAQ</a>
+        <a href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener" style="color:#e6c800;">☕ Support</a>
+      </div>
+    </div>
+    <p class="disclaimer">
+      Ender Client is an open-source, MIT-licensed launcher built with Electron and React. It does not modify Minecraft.<br />
+      Not affiliated with, endorsed by, or associated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Studios.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle?.addEventListener('click', () => links.classList.toggle('open'));
+  links?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  (function () {
+    if (reduce) return;
+    const c = document.getElementById('particles');
+    const ctx = c.getContext('2d');
+    let w, h, parts;
+    function size() {
+      w = c.width = window.innerWidth; h = c.height = window.innerHeight;
+      const count = Math.min(70, Math.floor(w / 22));
+      parts = Array.from({ length: count }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() * 1.6 + 0.4,
+        vy: -(Math.random() * 0.35 + 0.08), vx: (Math.random() - 0.5) * 0.18,
+        a: Math.random() * 0.5 + 0.15, tw: Math.random() * Math.PI * 2
+      }));
+    }
+    size(); window.addEventListener('resize', size);
+    function tick() {
+      ctx.clearRect(0, 0, w, h);
+      for (const p of parts) {
+        p.y += p.vy; p.x += p.vx; p.tw += 0.02;
+        if (p.y < -5) { p.y = h + 5; p.x = Math.random() * w; }
+        const flick = 0.6 + Math.sin(p.tw) * 0.4;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180,130,255,${p.a * flick})`; ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  (async function () {
+    const REPO = "Sxarlos/EnderClient";
+    try {
+      const res = await fetch("https://api.github.com/repos/" + REPO + "/releases/latest", {
+        headers: { "Accept": "application/vnd.github+json" }
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      const tag = (data.tag_name || "").trim();
+      if (tag) {
+        const v = /^v/i.test(tag) ? tag : "v" + tag;
+        const raw = v.replace(/^v/i, "");
+        document.getElementById("ver").textContent = v;
+        document.getElementById("ver-inline").textContent = raw;
+      }
+      const exe = (data.assets || []).find(a => /\.exe$/i.test(a.name || ""));
+      if (exe?.browser_download_url) {
+        document.getElementById("dl-btn").href = exe.browser_download_url;
+      }
+    } catch (_) {}
+  })();
+</script>
+</body>
+</html>

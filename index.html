@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ender Client — One launcher. Every modpack source.</title>
+<title>Ender Client | Free Open-Source Minecraft Launcher for Modrinth &amp; CurseForge</title>
 <meta name="description" content="Free, open-source Minecraft launcher for Windows. Browse Modrinth, CurseForge, FTB, ATLauncher & Technic — isolated instances, live logs, shader support. MIT-licensed." />
 <link rel="canonical" href="https://ender-client.xyz/" />
 
@@ -479,11 +479,11 @@
       <span class="ver" id="ver">v0.3.5</span>
     </a>
     <div class="nav-links" id="navlinks">
-      <a href="#features">Features</a>
+      <a href="/features">Features</a>
       <a href="#screens">Screenshots</a>
-      <a href="#install">Install</a>
+      <a href="/faq">FAQ</a>
       <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
-      <a class="nav-cta" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
+      <a class="nav-cta" href="/download">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
         Download
       </a>
@@ -501,7 +501,7 @@
       <div>
         <span class="eyebrow">Open-source Minecraft launcher</span>
         <h1>One launcher.<br /><span class="accent">Every modpack source.</span></h1>
-        <p class="lede">Ender Client browses <strong>Modrinth, CurseForge, FTB, ATLauncher</strong> and <strong>Technic</strong> in one place, keeps every instance isolated, and launches the official game. It's <strong>just an interface</strong> — your install stays untouched.</p>
+        <p class="lede">Ender Client is a <strong>free, open-source Minecraft launcher for Windows</strong>. Install and manage modpacks from <strong>Modrinth, CurseForge, FTB, ATLauncher</strong> and <strong>Technic</strong> — isolated instances, live logs, shader support, and the official game. <strong>Just an interface</strong> — your install stays untouched.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
@@ -597,6 +597,9 @@
           <p>Ender, Amethyst, Ocean, Crimson, Gold, Midnight and Daylight. Plus Discord Rich Presence and per-instance play-time tracking.</p>
         </div>
       </div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="/features" style="font-family:var(--display);font-weight:600;font-size:14px;color:var(--ender-bright);border-bottom:1px solid rgba(199,164,255,0.3);transition:border-color .15s;">See full feature breakdown →</a>
+      </div>
     </div>
   </section>
 
@@ -660,7 +663,7 @@
       <div class="sec-head reveal">
         <span class="eyebrow">Resource usage</span>
         <h2>Easy on RAM. Hard on features.</h2>
-        <p>Most Electron launchers are notorious for memory bloat. Ender Client is the exception — sitting comfortably close to native launchers at idle, and nowhere near CurseForge's eye-watering spike when a modpack loads.</p>
+        <p>Some Electron-based launchers can use significant memory under load. Ender Client stays lean — sitting comfortably close to native launchers at idle, well below what CurseForge uses when a modpack launches.</p>
       </div>
       <div class="ram-chart reveal">
         <div class="ram-row">
@@ -735,6 +738,9 @@
           <p>First launch downloads the version and assets automatically. Watch the progress on the card, then you're in the game.</p>
         </div>
       </div>
+      <div style="margin-top:28px;text-align:center;">
+        <a href="/download" style="font-family:var(--display);font-weight:600;font-size:14px;color:var(--ender-bright);border-bottom:1px solid rgba(199,164,255,0.3);transition:border-color .15s;">Full install guide &amp; system requirements →</a>
+      </div>
     </div>
   </section>
 
@@ -808,7 +814,9 @@
         <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/Sxarlos/EnderClient/releases/latest" target="_blank" rel="noopener">Releases</a>
         <a href="https://github.com/Sxarlos/EnderClient/blob/main/README.md" target="_blank" rel="noopener">Docs</a>
-        <a href="#features">Features</a>
+        <a href="/features">Features</a>
+        <a href="/download">Download</a>
+        <a href="/faq">FAQ</a>
         <a href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener" style="color:#e6c800;">☕ Support</a>
       </div>
     </div>
@@ -888,7 +896,7 @@
 
       const exe = (data.assets || []).find(a => /\.exe$/i.test(a.name || ""));
       if (exe && exe.browser_download_url) {
-        document.querySelectorAll("a.nav-cta, a.btn-primary").forEach(a => {
+        document.querySelectorAll("a.btn-primary").forEach(a => {
           a.href = exe.browser_download_url;
         });
       }

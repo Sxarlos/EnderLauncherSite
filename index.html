@@ -326,6 +326,55 @@
   .btn-coffee svg { width: 20px; height: 20px; flex-shrink: 0; }
   @media (max-width: 560px) { .support { padding: 40px 24px; } }
 
+  /* supporters */
+  .supporters-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; min-height: 48px; }
+  .s-chip {
+    display: flex; align-items: center; gap: 10px;
+    border: 1px solid var(--edge); border-radius: 100px;
+    padding: 7px 15px 7px 10px; background: rgba(255,255,255,0.02);
+    transition: border-color .2s, transform .2s;
+  }
+  .s-chip:hover { border-color: var(--edge-strong); transform: translateY(-2px); }
+  .s-av {
+    width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+    display: grid; place-items: center;
+    font-family: var(--display); font-weight: 700; font-size: 13px; color: #0c0814;
+  }
+  .s-av-end-crystal { background: linear-gradient(135deg, var(--ender), #6f44d8); }
+  .s-av-elytra      { background: linear-gradient(135deg, #f7c948, #d99410); color: #1a1200 !important; }
+  .s-av-default     { background: linear-gradient(135deg, var(--chorus), #9a3e93); }
+  .s-name { font-family: var(--display); font-weight: 600; font-size: 14px; line-height: 1.2; }
+  .s-tier { font-family: var(--mono); font-size: 10px; color: var(--mist-dim); }
+  .s-empty { font-family: var(--mono); font-size: 13px; color: var(--mist-dim); padding: 4px 0; }
+  .s-cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 30px; }
+  .btn-stripe {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--display); font-weight: 700; font-size: 15px;
+    padding: 14px 22px; border-radius: 11px; border: none;
+    background: linear-gradient(120deg, var(--ender), #8a55f0); color: #100a1d;
+    box-shadow: 0 8px 28px rgba(164,114,255,0.32);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-stripe:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(164,114,255,0.45); color: #100a1d; }
+  .btn-stripe svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .btn-stripe-gold {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--display); font-weight: 700; font-size: 15px;
+    padding: 14px 22px; border-radius: 11px; border: none;
+    background: linear-gradient(120deg, #f7c948, #d99410); color: #1a1200;
+    box-shadow: 0 8px 28px rgba(247,201,72,0.28);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-stripe-gold:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(247,201,72,0.42); color: #1a1200; }
+  .btn-stripe-gold svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .tier-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    opacity: 0.7; display: block; margin-top: 1px;
+  }
+  .s-alt { font-size: 14px; color: var(--mist); }
+  .s-alt a { color: var(--ender-bright); border-bottom: 1px solid rgba(199,164,255,0.3); transition: border-color .15s; }
+  .s-alt a:hover { border-color: var(--ender-bright); }
+
   /* final */
   .final {
     border: 1px solid var(--edge-strong); border-radius: 20px; padding: 56px 40px; text-align: center;
@@ -662,6 +711,31 @@
     </div>
   </section>
 
+  <!-- SUPPORTERS -->
+  <section class="block" id="supporters" style="padding-top:0;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Community</span>
+        <h2>Our Supporters</h2>
+        <p>These people keep Ender Client alive. Every purchase goes directly toward development time and future features.</p>
+      </div>
+      <div class="supporters-grid reveal" id="supporters-grid">
+        <span class="s-empty">Loading...</span>
+      </div>
+      <div class="s-cta-row reveal">
+        <a class="btn-stripe" href="https://buy.stripe.com/eVqcN63o52si3V80NA57W01" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M2 10h20"/></svg>
+          <span>End Crystal<span class="tier-label">$3 / month</span></span>
+        </a>
+        <a class="btn-stripe-gold" href="https://buy.stripe.com/9B68wQe2J4AqcrEgMy57W00" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3L22 9.3l-5 5 1.2 7L12 18l-6.2 3.3 1.2-7-5-5 7.1-1z"/></svg>
+          <span>Elytra<span class="tier-label">$50 lifetime</span></span>
+        </a>
+        <span class="s-alt">or <a href="https://buymeacoffee.com/sxarlos" target="_blank" rel="noopener">buy me a coffee ☕</a></span>
+      </div>
+    </div>
+  </section>
+
   <!-- FINAL CTA -->
   <section class="block" style="padding-top:0;">
     <div class="wrap">
@@ -777,6 +851,46 @@
         });
       }
     } catch (_) { /* keep static fallbacks */ }
+  })();
+</script>
+<script>
+  // Replace this URL with your deployed Cloudflare Worker URL once the worker is set up
+  const SUPPORTERS_API = 'https://tight-field-e64f.eosfang0.workers.dev/supporters';
+
+  const TIER_CLASSES = { 'end crystal': 's-av-end-crystal', 'elytra': 's-av-elytra' };
+
+  function esc(str) {
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  (async function loadSupporters() {
+    const grid = document.getElementById('supporters-grid');
+    if (!grid) return;
+    try {
+      const res = await fetch(SUPPORTERS_API, { cache: 'no-store' });
+      if (!res.ok) throw new Error('fetch failed');
+      const list = await res.json();
+      if (!Array.isArray(list) || list.length === 0) {
+        grid.innerHTML = '<span class="s-empty">Be the first supporter!</span>';
+        return;
+      }
+      grid.innerHTML = list.map(s => {
+        const name = s.name || 'Anonymous';
+        const tier = s.tier || 'Supporter';
+        const tierKey = tier.toLowerCase();
+        const avClass = TIER_CLASSES[tierKey] || 's-av-default';
+        const initial = name.trim()[0]?.toUpperCase() || '?';
+        return `<div class="s-chip">
+          <span class="s-av ${avClass}">${esc(initial)}</span>
+          <span>
+            <div class="s-name">${esc(name)}</div>
+            <div class="s-tier">${esc(tier)}</div>
+          </span>
+        </div>`;
+      }).join('');
+    } catch (_) {
+      if (grid) grid.innerHTML = '';
+    }
   })();
 </script>
 </body>

@@ -211,7 +211,7 @@
     <div class="wrap">
       <span class="eyebrow">Friends feature</span>
       <h1>Self-host the <span class="accent">Presence Relay</span></h1>
-      <p>The relay is a tiny Node.js server that powers Ender Client's friends list. Since your presence data should belong to you — not a third party — you run it yourself. Deploy it for free in about five minutes.</p>
+      <p>The relay is a tiny Node.js server that powers Ender Client's friends list. Since your presence data should belong to you - not a third party - you run it yourself. Deploy it for free in about five minutes.</p>
     </div>
   </section>
 
@@ -224,24 +224,24 @@
         <div class="how-card reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
           <h3>Friend codes</h3>
-          <p>Every Ender Client install generates a unique 10-character code. Share yours with friends and add theirs in-app — no accounts or sign-ups needed.</p>
+          <p>Every Ender Client install generates a unique 10-character code. Share yours with friends and add theirs in-app - no accounts or sign-ups needed.</p>
         </div>
         <div class="how-card reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
           <h3>Live presence</h3>
-          <p>While you play, the launcher pushes your status — username, modpack, Minecraft version — to your relay every 30 seconds. Friends poll that code to see if you're online.</p>
+          <p>While you play, the launcher pushes your status - username, modpack, Minecraft version - to your relay every 30 seconds. Friends poll that code to see if you're online.</p>
         </div>
         <div class="how-card reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <h3>Auto-expire</h3>
-          <p>Entries drop off 90 seconds after the last update. Close the game and you disappear from your friends' list automatically — no stale "online" statuses.</p>
+          <p>Entries drop off 90 seconds after the last update. Close the game and you disappear from your friends' list automatically - no stale "online" statuses.</p>
         </div>
       </div>
     </div>
 
     <!-- Deploy on Render -->
     <div class="section">
-      <div class="section-label reveal">Deploy on Render (recommended — free)</div>
+      <div class="section-label reveal">Deploy on Render (recommended - free)</div>
       <div class="panel reveal" style="margin-bottom: 18px;">
         <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.8 8.3 9 9 5.2-.7 9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -252,7 +252,7 @@
             <span class="step-num">STEP 01</span>
             <div class="step-content">
               <h4>Fork the repo</h4>
-              <p>Head to <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">github.com/Sxarlos/EnderClient</a> and click <strong style="color:var(--paper)">Fork</strong>. The relay lives in the <code style="font-family:var(--mono);font-size:12.5px;color:var(--ender-bright);background:rgba(164,114,255,0.1);padding:1px 6px;border-radius:5px;">relay/</code> folder — Render can deploy it straight from the monorepo.</p>
+              <p>Head to <a href="https://github.com/Sxarlos/EnderClient" target="_blank" rel="noopener">github.com/Sxarlos/EnderClient</a> and click <strong style="color:var(--paper)">Fork</strong>. The relay lives in the <code style="font-family:var(--mono);font-size:12.5px;color:var(--ender-bright);background:rgba(164,114,255,0.1);padding:1px 6px;border-radius:5px;">relay/</code> folder - Render can deploy it straight from the monorepo.</p>
             </div>
           </div>
           <div class="step-item">
@@ -269,7 +269,7 @@
               <p>In the Render settings, set <strong style="color:var(--paper)">Root Directory</strong> to <code style="font-family:var(--mono);font-size:12.5px;color:var(--ender-bright);background:rgba(164,114,255,0.1);padding:1px 6px;border-radius:5px;">relay</code>, then:</p>
               <div class="code-block"><span class="cm">Build command:</span>  npm install
 <span class="cm">Start command:</span>  npm start</div>
-              <p style="margin-top:10px;">Render injects the <code style="font-family:var(--mono);font-size:12.5px;color:var(--ender-bright);background:rgba(164,114,255,0.1);padding:1px 6px;border-radius:5px;">PORT</code> environment variable automatically — no extra config needed.</p>
+              <p style="margin-top:10px;">Render injects the <code style="font-family:var(--mono);font-size:12.5px;color:var(--ender-bright);background:rgba(164,114,255,0.1);padding:1px 6px;border-radius:5px;">PORT</code> environment variable automatically - no extra config needed.</p>
             </div>
           </div>
           <div class="step-item">
@@ -278,7 +278,7 @@
               <h4>Deploy and copy your URL</h4>
               <p>Click <strong style="color:var(--paper)">Create Web Service</strong>. Once the build completes, Render gives you a URL like:</p>
               <div class="code-block">https://ender-relay-xxxx.onrender.com</div>
-              <p style="margin-top:10px;">Copy it — you'll paste it into Ender Client next.</p>
+              <p style="margin-top:10px;">Copy it - you'll paste it into Ender Client next.</p>
             </div>
           </div>
           <div class="step-item">
@@ -326,9 +326,9 @@ npm start</div>
         Good to know
       </h3>
       <ul class="note-list">
-        <li><strong>No database or secrets required.</strong> The relay is stateless — everything is held in memory. There's nothing to configure beyond deploying the file.</li>
+        <li><strong>No database or secrets required.</strong> The relay is stateless - everything is held in memory. There's nothing to configure beyond deploying the file.</li>
         <li><strong>Render's free tier spins down after inactivity.</strong> The first poll after a cold start may take a few seconds. Ender Client handles reconnection automatically.</li>
-        <li><strong>Restarting clears all presence data.</strong> Clients re-register within 30 seconds on their next heartbeat — no manual action needed.</li>
+        <li><strong>Restarting clears all presence data.</strong> Clients re-register within 30 seconds on their next heartbeat - no manual action needed.</li>
         <li><strong>One relay can be shared by multiple people.</strong> All your friends just need to point their Ender Client at the same URL.</li>
       </ul>
     </div>

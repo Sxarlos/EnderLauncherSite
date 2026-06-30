@@ -625,9 +625,7 @@
   })();
 
   (async function () {
-    const REPO = "Sxarlos/EnderClient";
-    const CACHE_KEY = "ec_release";
-    const CACHE_TTL = 3600000;
+    const RELEASE_URL = "https://ender-supporter.eosfang0.workers.dev/release";
 
     function applyTag(tag) {
       if (!tag) return;
@@ -637,22 +635,9 @@
     }
 
     try {
-      const raw = localStorage.getItem(CACHE_KEY);
-      if (raw) {
-        const { tag, ts } = JSON.parse(raw);
-        if (Date.now() - ts < CACHE_TTL) { applyTag(tag); return; }
-      }
-    } catch (_) {}
-
-    try {
-      const res = await fetch("https://api.github.com/repos/" + REPO + "/releases/latest", {
-        headers: { "Accept": "application/vnd.github+json" },
-        cache: "no-store"
-      });
+      const res = await fetch(RELEASE_URL);
       if (!res.ok) return;
-      const data = await res.json();
-      const tag = (data.tag_name || "").trim();
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ tag, ts: Date.now() })); } catch (_) {}
+      const { tag } = await res.json();
       applyTag(tag);
     } catch (_) {}
   })();

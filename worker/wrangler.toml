@@ -7,7 +7,7 @@ compatibility_date = "2024-09-23"
 # Then paste the returned id below.
 [[kv_namespaces]]
 binding = "SUPPORTERS"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "8a983063a0fe4fdcb18aa81555fb9c49"
 
 [vars]
 # No public vars needed — STRIPE_WEBHOOK_SECRET is a secret:

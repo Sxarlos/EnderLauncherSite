@@ -1,5 +1,6 @@
 // Ender Client — Supporter Worker
-// Handles two routes:
+// Handles three routes:
+//   GET  /release     → proxies GitHub latest release (tag + exe URL), edge-cached 5 min
 //   GET  /supporters  → returns supporters list from KV (used by the marketing site)
 //   POST /webhook     → validates Stripe webhook signature, stores new supporter in KV
 //
@@ -33,6 +34,10 @@ export default {
       return new Response(null, { status: 204, headers: CORS });
     }
 
+    if (pathname === '/release' && request.method === 'GET') {
+      return handleRelease();
+    }
+
     if (pathname === '/supporters' && request.method === 'GET') {
       return handleGet(env);
     }
@@ -44,6 +49,44 @@ export default {
     return new Response('Not found', { status: 404 });
   },
 };
+
+async function handleRelease() {
+  const GH_URL = 'https://api.github.com/repos/Sxarlos/EnderClient/releases/latest';
+  const CACHE_TTL = 300; // 5 minutes
+  const cache = caches.default;
+  const cacheKey = new Request(GH_URL);
+
+  const cached = await cache.match(cacheKey);
+  if (cached) {
+    return new Response(await cached.text(), {
+      headers: { ...CORS, 'Content-Type': 'application/json', 'Cache-Control': `public, max-age=${CACHE_TTL}` },
+    });
+  }
+
+  const res = await fetch(GH_URL, {
+    headers: { 'Accept': 'application/vnd.github+json', 'User-Agent': 'EnderClient-Site/1.0' },
+  });
+
+  if (!res.ok) {
+    return new Response(JSON.stringify({ error: 'upstream' }), {
+      status: 502,
+      headers: { ...CORS, 'Content-Type': 'application/json' },
+    });
+  }
+
+  const data = await res.json();
+  const tag = (data.tag_name || '').trim();
+  const exe = ((data.assets || []).find(a => /\.exe$/i.test(a.name || '')) || {}).browser_download_url || '';
+  const payload = JSON.stringify({ tag, exe });
+
+  await cache.put(cacheKey, new Response(payload, {
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': `public, max-age=${CACHE_TTL}` },
+  }));
+
+  return new Response(payload, {
+    headers: { ...CORS, 'Content-Type': 'application/json', 'Cache-Control': `public, max-age=${CACHE_TTL}` },
+  });
+}
 
 async function handleGet(env) {
   const raw = await env.supporters.get('list');

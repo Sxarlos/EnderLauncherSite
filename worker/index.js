@@ -1,4 +1,4 @@
-// Ender Launcher — Supporter Worker
+// Thendrask Launcher — Supporter Worker
 // Handles three routes:
 //   GET  /release     → proxies GitHub latest release (tag + exe URL), edge-cached 5 min
 //   GET  /supporters  → returns supporters list from KV (used by the marketing site)
@@ -51,7 +51,7 @@ export default {
 };
 
 async function handleRelease() {
-  const GH_URL = 'https://api.github.com/repos/Sxarlos/EnderClient/releases/latest';
+  const GH_URL = 'https://api.github.com/repos/Sxarlos/ThendraskLauncher/releases/latest';
   const CACHE_TTL = 300; // 5 minutes
   const cache = caches.default;
   const cacheKey = new Request(GH_URL);
@@ -64,7 +64,7 @@ async function handleRelease() {
   }
 
   const res = await fetch(GH_URL, {
-    headers: { 'Accept': 'application/vnd.github+json', 'User-Agent': 'EnderLauncher-Site/1.0' },
+    headers: { 'Accept': 'application/vnd.github+json', 'User-Agent': 'ThendraskLauncher-Site/1.0' },
   });
 
   if (!res.ok) {

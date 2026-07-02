@@ -89,7 +89,7 @@ async function handleRelease() {
 }
 
 async function handleGet(env) {
-  const raw = await env.supporters.get('list');
+  const raw = await env.SUPPORTERS.get('list');
   return new Response(raw || '[]', {
     headers: { ...CORS, 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=30' },
   });
@@ -120,10 +120,10 @@ async function handleWebhook(request, env) {
     const name = (session.customer_details?.name || 'Anonymous').trim().slice(0, 64);
     const tier = ((session.metadata?.tier) || 'Supporter').trim().slice(0, 32);
 
-    const existing = JSON.parse((await env.supporters.get('list')) || '[]');
+    const existing = JSON.parse((await env.SUPPORTERS.get('list')) || '[]');
     existing.unshift({ name, tier, joinedAt: new Date().toISOString() });
     if (existing.length > MAX_SUPPORTERS) existing.splice(MAX_SUPPORTERS);
-    await env.supporters.put('list', JSON.stringify(existing));
+    await env.SUPPORTERS.put('list', JSON.stringify(existing));
   }
 
   return new Response('OK', { status: 200, headers: CORS });

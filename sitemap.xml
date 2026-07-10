@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ender-client.xyz/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thendrask.org/</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ender-client.xyz/download</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thendrask.org/download</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ender-client.xyz/features</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thendrask.org/features</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ender-client.xyz/faq</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thendrask.org/faq</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ender-client.xyz/selfhost</loc>
-    <lastmod>2026-07-02</lastmod>
+    <loc>https://thendrask.org/selfhost</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

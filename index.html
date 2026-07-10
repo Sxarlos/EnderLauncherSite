@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Thendrask Launcher | Free Open-Source Minecraft Launcher for Modrinth &amp; CurseForge</title>
-<meta name="description" content="Free, open-source Minecraft launcher for Windows. Browse Modrinth, CurseForge, FTB, ATLauncher & Technic - isolated instances, live logs, shader support. MIT-licensed." />
-<link rel="canonical" href="https://ender-client.xyz/" />
+<meta name="description" content="Thendrask Launcher v0.5.1 is a free, open-source Minecraft launcher with six modpack sources, a custom pack builder, safe updates, snapshots, repair and portable backups." />
+<link rel="canonical" href="https://thendrask.org/" />
 
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png" />
@@ -15,15 +15,15 @@
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ender-client.xyz/" />
-<meta property="og:title" content="Thendrask Launcher - One launcher. Every modpack source." />
-<meta property="og:description" content="Open-source Minecraft launcher. Browse Modrinth, CurseForge, FTB, ATLauncher and Technic, manage isolated instances, and launch the official game." />
-<meta property="og:image" content="https://ender-client.xyz/assets/og.png" />
+<meta property="og:url" content="https://thendrask.org/" />
+<meta property="og:title" content="Thendrask Launcher v0.5.1 - Build it. Launch it. Keep it safe." />
+<meta property="og:description" content="Build custom modpacks, browse six sources, and protect every instance with safe updates, snapshots, repair and portable backups." />
+<meta property="og:image" content="https://thendrask.org/assets/og.png" />
 <meta property="og:site_name" content="Thendrask Launcher" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Thendrask Launcher - One launcher. Every modpack source." />
-<meta name="twitter:description" content="Open-source Minecraft launcher for Modrinth, CurseForge, FTB, ATLauncher and Technic." />
-<meta name="twitter:image" content="https://ender-client.xyz/assets/og.png" />
+<meta name="twitter:title" content="Thendrask Launcher v0.5.1" />
+<meta name="twitter:description" content="Custom modpacks, six sources, safe updates, snapshots, repair and portable backups in one open-source launcher." />
+<meta name="twitter:image" content="https://thendrask.org/assets/og.png" />
 <meta name="theme-color" content="#0A0911" />
 
 <script>document.documentElement.classList.add('js');</script>
@@ -38,6 +38,7 @@
   /* hero */
   .hero { padding: 88px 0 64px; }
   .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
+  .hero-grid > * { min-width: 0; }
   h1 {
     font-family: var(--display); font-weight: 700;
     font-size: clamp(40px, 5.4vw, 62px); line-height: 1.04; letter-spacing: -0.01em; margin: 20px 0 0;
@@ -54,6 +55,7 @@
 
   /* real hero screenshot */
   .hero-shot {
+    max-width: 100%;
     border-radius: 14px; border: 1px solid var(--edge-strong); overflow: hidden;
     background: var(--void-2);
     box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85), 0 0 70px -25px rgba(164,114,255,0.35);
@@ -242,18 +244,18 @@
     "@type": "SoftwareApplication",
     "name": "Thendrask Launcher",
     "applicationCategory": "GameApplication",
-    "operatingSystem": "Windows",
+    "operatingSystem": "Windows, macOS, Linux",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "softwareVersion": "0.3.15",
-    "description": "Free, open-source Minecraft launcher. Browse Modrinth, CurseForge, FTB, ATLauncher and Technic - isolated instances, live logs, shader support. MIT-licensed.",
-    "url": "https://ender-client.xyz/",
-    "image": "https://ender-client.xyz/assets/og.png",
+    "softwareVersion": "0.5.1",
+    "description": "Free, open-source Minecraft launcher with six modpack sources, a custom pack builder, safe updates, snapshots, repair tools and portable backups.",
+    "url": "https://thendrask.org/",
+    "image": "https://thendrask.org/assets/og.png",
     "downloadUrl": "https://github.com/Sxarlos/ThendraskLauncher/releases/latest",
-    "featureList": "Secure Microsoft login, Multi-source modpack browser (Modrinth, CurseForge, FTB, ATLauncher, Technic), Isolated instances, Live launch logs, Server monitor, Quick connect to saved servers, Friends & presence, Shader auto-install, In-app updates, Seven built-in themes",
+    "featureList": "Secure Microsoft login, Six-source modpack browser (Modrinth, CurseForge, FTB, FTB Legacy, ATLauncher, Technic), Custom modpack builder, Compatible mod search and dependency install, Safe modpack updates with automatic rollback, Snapshots, Portable backups, Repair and diagnostics, Library groups and tags, Isolated instances, Live launch logs, Server monitor, Friends and presence, In-app updates, Seven built-in themes",
     "softwareRequirements": "Java 8, 17, or 21",
     "license": "https://opensource.org/licenses/MIT",
     "author": {
@@ -265,14 +267,14 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Thendrask Launcher",
-    "url": "https://ender-client.xyz/"
+    "url": "https://thendrask.org/"
   },
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Thendrask Launcher",
-    "url": "https://ender-client.xyz/",
-    "logo": "https://ender-client.xyz/assets/logo.png"
+    "url": "https://thendrask.org/",
+    "logo": "https://thendrask.org/assets/logo.png"
   }
 ]
 </script>
@@ -287,7 +289,7 @@
     <a href="#top" class="brand">
       <img class="logo-img" src="assets/logo.png" alt="Thendrask Launcher logo" width="30" height="30" />
       Thendrask Launcher
-      <span class="ver" id="ver">v0.3.15</span>
+      <span class="ver" id="ver">v0.5.1</span>
     </a>
     <div class="nav-links" id="navlinks">
       <a href="/features">Features</a>
@@ -312,9 +314,9 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">Open-source Minecraft launcher</span>
-        <h1>One launcher.<br /><span class="accent">Every modpack source.</span></h1>
-        <p class="lede">Thendrask Launcher is a <strong>free, open-source Minecraft launcher for Windows</strong>. Install and manage modpacks from <strong>Modrinth, CurseForge, FTB, ATLauncher</strong> and <strong>Technic</strong> - isolated instances, live logs, shader support, and the official game. <strong>Just an interface</strong> - your install stays untouched.</p>
+        <span class="eyebrow">New in v0.5.1</span>
+        <h1>Build it. Launch it.<br /><span class="accent">Keep it safe.</span></h1>
+        <p class="lede">Thendrask Launcher is a <strong>free, open-source Minecraft launcher for Windows</strong>. Browse six modpack sources, build your own pack with compatible mods and automatic dependencies, then protect every instance with <strong>snapshots, repair tools and portable backups</strong>.</p>
         <div class="cta-row">
           <a class="btn btn-primary" data-release-exe href="https://github.com/Sxarlos/ThendraskLauncher/releases/latest" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
@@ -327,16 +329,16 @@
         </div>
         <div class="meta-line">
           <span><span class="dot"></span>MIT licensed</span>
-          <span><span class="dot"></span>Windows x64</span>
-          <span><span class="dot"></span>In-app auto-updates</span>
-          <span><span class="dot"></span>Not affiliated with Mojang</span>
+          <span><span class="dot"></span>v0.5.1 for Windows x64</span>
+          <span><span class="dot"></span>Safe updates &amp; rollback</span>
+          <span><span class="dot"></span>macOS &amp; Linux public beta</span>
         </div>
       </div>
 
       <!-- hero: real home screen (tilts with the cursor, click to zoom) -->
       <div class="tilt-wrap">
         <div class="hero-shot" data-tilt>
-          <img src="assets/screenshots/home.webp" data-lightbox data-caption="Thendrask Launcher - home screen" alt="Thendrask Launcher home screen - Welcome to Thendrask Launcher, with Browse Modpacks and New Instance buttons and a library grid" width="1163" height="746" />
+          <img src="assets/screenshots/home.webp" data-lightbox data-caption="Thendrask Launcher v0.5.1 - home dashboard" alt="Thendrask Launcher v0.5.1 home dashboard showing a featured modpack, installed library, modpack browser, servers and settings" width="1440" height="900" />
         </div>
       </div>
     </div>
@@ -392,18 +394,33 @@
       <div class="feat-grid" data-stagger>
         <div class="feat glow reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-          <h3>Multi-source modpack browser</h3>
-          <p>Search five providers from one window. Sort Modrinth and CurseForge by popular, updated or newest, and filter by category.</p>
+          <h3>Six-source modpack browser</h3>
+          <p>Search Modrinth, CurseForge, modern and legacy FTB, ATLauncher and Technic from one window, with sorting and category filters.</p>
         </div>
         <div class="feat glow reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
-          <h3>Isolated instances</h3>
-          <p>Vanilla or modded, any version, each with its own clean <code class="inline">.minecraft</code> folder. No cross-contamination between packs.</p>
+          <h3>Custom modpack builder</h3>
+          <p>Create Fabric, Forge, NeoForge or Quilt instances, then find compatible mods and install required dependencies automatically.</p>
+        </div>
+        <div class="feat glow reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5M17 4l3 3-3 3M8 14l-3 3 3 3"/></svg></div>
+          <h3>Safe updates &amp; rollback</h3>
+          <p>Required files are verified and the working pack is snapshotted before an update. If anything fails, Thendrask rolls it back automatically.</p>
+        </div>
+        <div class="feat glow reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.2 8 10 4.6-1.8 8-5 8-10V6z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></div>
+          <h3>Backups, repair &amp; diagnostics</h3>
+          <p>Create snapshots, verify broken files, export portable backups and generate a sanitized diagnostic bundle from the same instance screen.</p>
+        </div>
+        <div class="feat glow reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="18" cy="18" r="3"/></svg></div>
+          <h3>Organised libraries</h3>
+          <p>Find large collections quickly with favourites, groups, tags and instant instance search, plus per-instance RAM and JVM controls.</p>
         </div>
         <div class="feat glow reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 6.5a3 3 0 0 1 0 5.8M18 20a5.3 5.3 0 0 0-3-4.7"/></svg></div>
           <h3>Friends &amp; presence</h3>
-          <p>Add friends by code and see who's online and what they're playing - powered by a relay you self-host, so the social graph is yours.</p>
+          <p>Add friends by code and see who's online and what they're playing, powered by a hardened relay you can self-host.</p>
         </div>
       </div>
       <div style="margin-top:28px;text-align:center;">
@@ -418,16 +435,24 @@
       <div class="sec-head reveal">
         <span class="eyebrow">See it in action</span>
         <h2>The launcher, up close.</h2>
-        <p>Real captures from Thendrask Launcher. Built to feel native, fast, and out of your way. Click any screenshot to zoom.</p>
+        <p>Fresh captures from Thendrask Launcher v0.5.1, including the new mod builder and reliability tools. Click any screenshot to zoom.</p>
       </div>
       <div class="gallery" data-stagger>
         <div class="shot reveal">
-          <div class="chrome"><i></i><i></i><i></i><span>Modpack browser - six sources</span></div>
-          <img src="assets/screenshots/browse.webp" data-lightbox data-caption="Modpack browser - six sources" alt="Browsing CurseForge modpacks in Thendrask Launcher - RLCraft, Pixelmon and All the Mods 10 with install buttons" width="1166" height="751" />
+          <div class="chrome"><i></i><i></i><i></i><span>Discover packs across six sources</span></div>
+          <img src="assets/screenshots/browse.webp" data-lightbox data-caption="Discover packs across six sources" alt="Thendrask Launcher v0.5.1 browsing popular Modrinth modpacks with version, category and loader filters" width="1440" height="900" />
         </div>
         <div class="shot reveal">
-          <div class="chrome"><i></i><i></i><i></i><span>Server monitor - live status</span></div>
-          <img src="assets/screenshots/servers.webp" data-lightbox data-caption="Server monitor - live status" alt="Server monitor in Thendrask Launcher showing Hypixel with a live player count and ping" width="1165" height="754" />
+          <div class="chrome"><i></i><i></i><i></i><span>Build and tune your own modpack</span></div>
+          <img src="assets/screenshots/mods.webp" data-lightbox data-caption="Build and tune your own modpack" alt="Thendrask Launcher v0.5.1 mod management screen with compatible Modrinth and CurseForge search, pack update and included mods" width="1440" height="900" />
+        </div>
+        <div class="shot reveal">
+          <div class="chrome"><i></i><i></i><i></i><span>Snapshots, repair and portable backups</span></div>
+          <img src="assets/screenshots/maintenance.webp" data-lightbox data-caption="Snapshots, repair and portable backups" alt="Thendrask Launcher v0.5.1 instance tools showing snapshots, verification, diagnostics, storage totals and portable backup export" width="1440" height="900" />
+        </div>
+        <div class="shot reveal">
+          <div class="chrome"><i></i><i></i><i></i><span>Live server status at a glance</span></div>
+          <img src="assets/screenshots/servers.webp" data-lightbox data-caption="Live server status at a glance" alt="Thendrask Launcher v0.5.1 server monitor showing saved servers with Minecraft versions, player counts and live ping" width="1440" height="900" />
         </div>
       </div>
     </div>

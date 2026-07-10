@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Features | Thendrask Launcher - Open-Source Minecraft Launcher</title>
-<meta name="description" content="Explore Thendrask Launcher's features - multi-source modpack browser, isolated instances, live logs, server monitor, friends, shader auto-install, seven themes and more." />
-<link rel="canonical" href="https://ender-client.xyz/features" />
+<meta name="description" content="Explore Thendrask Launcher v0.5.1: six modpack sources, a custom pack builder, safe updates with rollback, snapshots, repair, diagnostics and portable backups." />
+<link rel="canonical" href="https://thendrask.org/features" />
 
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96x96.png" />
@@ -14,15 +14,15 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://ender-client.xyz/features" />
+<meta property="og:url" content="https://thendrask.org/features" />
 <meta property="og:title" content="Features | Thendrask Launcher" />
-<meta property="og:description" content="Multi-source modpack browser, isolated instances, friends, server monitor, shader auto-install, seven themes - all in a free open-source Minecraft launcher." />
-<meta property="og:image" content="https://ender-client.xyz/assets/og.png" />
+<meta property="og:description" content="Build custom packs, browse six sources, and protect instances with safe updates, snapshots, repair, diagnostics and portable backups." />
+<meta property="og:image" content="https://thendrask.org/assets/og.png" />
 <meta property="og:site_name" content="Thendrask Launcher" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Features | Thendrask Launcher" />
 <meta name="twitter:description" content="Everything Thendrask Launcher does - and what makes it different from CurseForge and Prism." />
-<meta name="twitter:image" content="https://ender-client.xyz/assets/og.png" />
+<meta name="twitter:image" content="https://thendrask.org/assets/og.png" />
 <meta name="theme-color" content="#0A0911" />
 
 <script>document.documentElement.classList.add('js');</script>
@@ -87,7 +87,7 @@
     <a href="/" class="brand">
       <img class="logo-img" src="assets/logo.png" alt="Thendrask Launcher logo" width="30" height="30" />
       Thendrask Launcher
-      <span class="ver" id="ver">v0.3.15</span>
+      <span class="ver" id="ver">v0.5.1</span>
     </a>
     <div class="nav-links" id="navlinks">
       <a href="/features" class="active">Features</a>
@@ -113,7 +113,7 @@
     <div class="wrap">
       <span class="eyebrow">What's inside</span>
       <h1>Everything you need.<br /><span class="accent">Nothing you don't.</span></h1>
-      <p>Thendrask Launcher is a free, open-source Minecraft launcher for Windows built to do one thing well - get you into a modpack with as little friction as possible.</p>
+      <p>Thendrask Launcher v0.5.1 gets you into a pack quickly, then gives you the tools to customise, organise, repair and back it up without leaving the launcher.</p>
     </div>
   </section>
 
@@ -126,7 +126,7 @@
       <div class="feat-row" data-stagger>
         <div class="feat-card glow reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-          <h3>Five sources, one window</h3>
+          <h3>Six sources, one window</h3>
           <p>Browse Modrinth, CurseForge, FTB (modern and legacy), ATLauncher, and Technic without switching apps or opening a browser. Search, filter by category, and sort by popular, updated, or newest.</p>
           <div class="detail">
             <ul>
@@ -161,6 +161,50 @@
       </div>
     </div>
 
+    <!-- Build, update and recover -->
+    <div class="feat-section">
+      <div class="section-label reveal">New in v0.5.1 · Build, update &amp; recover</div>
+
+      <div class="feat-row three" data-stagger>
+        <div class="feat-card glow reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Custom modpack builder</h3>
+          <p>Start with Fabric, Forge, NeoForge or Quilt, then search Modrinth and CurseForge for mods that match that exact Minecraft version and loader.</p>
+          <div class="detail">
+            <ul>
+              <li>Compatibility-filtered mod search</li>
+              <li>Required dependencies installed automatically</li>
+              <li>Enable, disable, remove or update in-app</li>
+            </ul>
+          </div>
+        </div>
+        <div class="feat-card glow reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5M17 4l3 3-3 3M8 14l-3 3 3 3"/></svg></div>
+          <h3>Safe pack updates</h3>
+          <p>Before a modpack update is applied, Thendrask verifies the required downloads and snapshots the working instance. A failed update automatically rolls back.</p>
+          <div class="detail">
+            <ul>
+              <li>Pre-update verification</li>
+              <li>Automatic working snapshot</li>
+              <li>Rollback when an update fails</li>
+            </ul>
+          </div>
+        </div>
+        <div class="feat-card glow reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.2 8 10 4.6-1.8 8-5 8-10V6z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></div>
+          <h3>Backups, repair &amp; diagnostics</h3>
+          <p>Create or restore snapshots, verify broken files, inspect storage and export a portable backup or sanitized diagnostic bundle from one screen.</p>
+          <div class="detail">
+            <ul>
+              <li>Portable backup export and import</li>
+              <li>Verify, repair and clean reinstall</li>
+              <li>Sanitized diagnostic ZIPs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Gameplay -->
     <div class="feat-section">
       <div class="section-label reveal">Gameplay &amp; launching</div>
@@ -179,7 +223,7 @@
         <div class="feat-card glow reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div>
           <h3>In-app updates</h3>
-          <p>The launcher polls GitHub Releases on startup. When a new build is available, a banner appears within the app - click once to download and install without opening a browser or losing your place.</p>
+          <p>The launcher checks GitHub Releases in the background and can download updates silently. When a build is ready, restart at a convenient moment without opening a browser.</p>
         </div>
       </div>
     </div>
@@ -238,7 +282,7 @@
         <div class="feat-card glow reveal">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 3.8 8.3 9 9 5.2-.7 9-4 9-9V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Secure Microsoft login</h3>
-          <p>Authentication uses Microsoft's official OAuth flow via msmc. You log in on Microsoft's own page - Thendrask Launcher never sees your password. Only an encrypted refresh token is stored in your OS keychain. Your account is as safe as it is with the official launcher.</p>
+          <p>Authentication uses Microsoft's official OAuth flow via msmc. Thendrask never sees your password and stores only an OS-keychain-encrypted refresh token. If secure storage is unavailable, it refuses to persist the token rather than falling back to plaintext.</p>
           <div class="detail">
             <ul>
               <li>Official Microsoft OAuth - password never seen</li>
